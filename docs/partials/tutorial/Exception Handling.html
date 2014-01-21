@@ -1,0 +1,130 @@
+<h1><code ng:non-bindable=""></code>
+<span class="hint"></span>
+</h1>
+<div><h1 id="exceptionhandling">Exception Handling</h2>
+
+<hr />
+
+<h2 id="enablingexceptionhandling">Enabling Exception Handling</h3>
+
+<ul>
+<li><p>Include the proper top-level, application, module dependency.  In most cases, common.exceptionHandler will provide
+an all encompassing dependency for the localization and notification modules.</p>
+
+<pre><code>angular.module('ccApp', [
+        ...
+        'common.exceptionHandler'
+</code></pre></li>
+</ul>
+
+<h2 id="usage">Usage</h3>
+
+<p>Provides a global, default, error handler for XHR calls.</p>
+
+<p>The primary purpose of global exception handler is to:</p>
+
+<ul>
+<li><p>Alleviate the need to write failure callbacks for XHR calls.  It will notify the user and log the error.</p></li>
+<li><p>Automatically notify users of non-fatal errors, by reading the response errors parameter.</p></li>
+<li><p>Allow explicit throwing of exceptions that notify the user of the fatal error.</p></li>
+<li><p>Allow explicit notification for non-fatal errors using a notification service.</p></li>
+<li><p>Integrates with external tools or native AnglularJS templates to display notifications.</p></li>
+</ul>
+
+<h2 id="alleviatestheneedtowritefailurecallbacksforxhrcallsitwillnotifytheuserandlogtheerror">Alleviates the need to write failure callbacks for XHR calls.  It will notify the user and log the error.</h3>
+
+<p><strong>Fatal Errors</strong></p>
+
+<p>The <a href="index.html#/api/common.exceptionHandler:exceptionHandler">exceptionHandler</a> interceptor will both notify the user of a
+fatal error via the UI, and log the error to the console.</p>
+
+<p>No failure callback is necessary:</p>
+
+<pre><code> hrp.getlist().
+   success(function(data) {
+     $scope.carrierSelector = data.file_list;
+   });
+</code></pre>
+
+<p>Messages are predefined according to HTTP status code:</p>
+
+<pre><code> case 401:
+     msgKey = 'errors.authentication';
+ case 403:
+     msgKey = 'errors.authentication';
+ case 500:
+     msgKey = 'errors.server';
+ default:
+     msgKey = 'errors.error';
+</code></pre>
+
+<p>See the The <a href="index.html#/api/common.i18nNotifications:i18nNotifications">i18nNotifications</a>  service for details regarding UI notification.</p>
+
+<h2 id="willautomaticallynotifyusersofnonfatalerrorsitreadsthexhrresponseerrorsparameter">Will automatically notify users of non-fatal errors.  It reads the XHR response errors parameter.</h3>
+
+<p><strong>Non-fatal Errors</strong></p>
+
+<p>The <a href="index.html#/api/common.exceptionHandler:exceptionHandler">exceptionHandler</a> interceptor will also handle non-fatal errors by inspecting the errors parameter for notification objects.</p>
+
+<p>An XHR response errors parameter can contain one or many notification object, and it uses the
+<a href="#/tutorial/common.i18nNotifications:i18nNotifications">i18nNotifications</a> service notification objects to provide
+translation and string parameter replacement.</p>
+
+<pre><code> {"errors": {"msgKey":"schedule.errors.list.is.incomplete"}
+
+ {"errors": [{"msgKey":"schedule.errors.list.is.incomplete","params":{"id":123}},{"msgKey":"schedule.errors.list.wrong.company","params":{"id":123}}]
+</code></pre>
+
+<h2 id="allowsexplicitthrowingofexceptionsthatnotifytheuserofthefatalerror">Allows explicit throwing of exceptions that notify the user of the fatal error.</h3>
+
+<p>Throw an exception object that will both notify the user of a fatal error via the UI, and log the error to the console.</p>
+
+<p>Note: For non-fatal notifications use the <a href="index.html#/api/common.i18nNotifications:i18nNotifications">i18nNotifications</a> service.  This service
+provides the means to alter the message type e.g. warning, success, etc.</p>
+
+<p>For the message key:</p>
+
+<pre><code> "errors.fatal.error": "Error: An unrecoverable error has occurred - {{time}}."
+</code></pre>
+
+<p>In JavaScript:</p>
+
+<pre><code> throw {
+      msgKey: 'errors.fatal.error'
+      params: {
+         time: moment().format('h:mm:ss a')
+     },
+ }
+</code></pre>
+
+<h1 id="allowsexplicitnotificationfornonfatalerrorsusinganotificationservice">Allows explicit notification for non-fatal errors using a notification service.</h2>
+
+<p>See the <a href="index.html#/api/common.i18nNotifications:i18nNotifications">i18nNotifications</a> service.</p>
+
+<h1 id="integrateswithexternaltoolsornativeanglularjstemplatestodisplaynotifications">Integrates with external tools or native AnglularJS templates to display notifications.</h2>
+
+<p>See the <a href="index.html#/api/common.i18nNotifications:i18nNotifications">i18nNotifications</a> service.</p>
+
+<p>Watching the notifications length of the notifications array presents many options for displaying notifications.</p>
+
+<pre><code>Toastr Integration
+
+$scope.$watch('notifications.getCurrent().length', function() {
+    var curNotifications = $scope.notifications.getCurrent();
+    if(curNotifications.length &gt; 0) {
+        angular.forEach(curNotifications, function(value){
+            toastr[value.type](value.message);
+        });
+    }
+});
+</code></pre>
+
+<p>OR</p>
+
+<pre><code>AngularJS Templates
+
+&lt;div ng-class="['alert', 'alert-'+notification.type]" ng-repeat="notification in notifications.getCurrent()"&gt;
+    &lt;button class="close" ng-click="removeNotification(notification)"&gt;x&lt;/button&gt;
+    {{notification.message}}
+&lt;/div&gt;
+</code></pre></div>

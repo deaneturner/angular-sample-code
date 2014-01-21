@@ -1,0 +1,49 @@
+<h1><code ng:non-bindable="">localizedMessages</code>
+<span class="hint">(localizedMessages in module <code ng:non-bindable="">common</code>
+)</span>
+</h1>
+<div><h2 id="Description">Description</h2>
+<div class="description"><p>A service used to retrieve localized strings and messages.  Provides support for parameter replacement using an
+additional parameter set.</p></div>
+<h2 id="Dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/common.i18Messages:i18nMessages">i18nMessages</a></code>
+</li>
+</ul>
+<div class="member method"><h2 id="Methods">Methods</h2>
+<ul class="methods"><li><h3 id="get">get(msgKey, [interpolatePparams])</h3>
+<div class="get"><p>Gets the translated value, with string replament parameters (if given).</p><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">msgKey – {string} – </code>
+<ul>
+<li>The message key value to be translated.</li>
+</ul></li>
+<li><code ng:non-bindable="">[interpolatePparams] – {Object} – </code>
+<ul>
+<li>The string replacement parameters to be injected into the message key.</li>
+</ul></li>
+</ul>
+<h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{string}</code>
+– <p>The translated message value.</p></div>
+</div>
+</li>
+</ul>
+</div>
+<h2 id="Example">Example</h2>
+<div class="example"><p>For a message key equal to:</p>
+
+<pre><code> first.and.last: 'My first name is {(firstName}} and my last is {{lastName}}.'
+</code></pre>
+
+<p>In JavaScript:</p>
+
+<pre><code> localizationMessages.get('first.and.last', {
+     firstName: 'foo',
+     lastName: 'bar'
+ });
+</code></pre>
+
+<p>Will return:</p>
+
+<pre><code> My first name is foo and my last is bar.
+</code></pre></div>
+</div>

@@ -1,0 +1,205 @@
+<h1><code ng:non-bindable=""></code>
+<span class="hint"></span>
+</h1>
+<div><h1 id="notifications">Notifications</h2>
+
+<hr />
+
+<h1 id="enablingnotifications">Enabling Notifications</h2>
+
+<ul>
+<li>Include the proper top-level, application, module dependency.  In most cases, common.exceptionHandler will provide
+an all encompassing dependency for the localization and notification modules.</li>
+<li>Define a top-level controller the provides the $scope necessary for watching the notifications array.</li>
+<li>Configure the i18nNotificationSettings settings display type (for an explanation on stacked vs. single - see
+<a href="index.html#/api/common.notifications:notifications">notifications</a> service).</li>
+<li>Configure an optional on route change error notification.</li>
+<li>Set the watch for the notifications array change.  A change in length will trigger a UI notification.</li>
+<li>Set the optional delegate function for bypassing stored notifications all together (See the
+<a href="index.html#/api/common.i18nNotifications:i18nNotifications">i18nNotifications</a> service's
+<a href="index.html#/api/common.i18nNotifications:i18nNotifications#notify">notify</a> method).</li>
+</ul>
+
+<h2 id="includethepropertoplevelapplicationmoduledependencyinmostcasescommonexceptionhandlerwillprovideanallencompassingdependencyforthelocalizationandnotificationmodules">Include the proper top-level, application, module dependency.  In most cases, common.exceptionHandler will providean all encompassing dependency for the localization and notification modules.</h3>
+
+<pre><code>angular.module('ccApp', [
+        ...
+        'common.exceptionHandler'
+</code></pre>
+
+<h2 id="defineatoplevelcontrollertheprovidesthedscopenecessaryforwatchingthenotificationsarray">Define a top-level controller the provides the $scope necessary for watching the notifications array.</h3>
+
+<pre><code>angular.module('ccApp').controller('appCtrl', ['$scope', 'i18nNotifications', 'version', 'i18nNotificationSettings', function($scope, i18nNotifications, version, i18nNotificationSettings) {
+</code></pre>
+
+<h2 id="configurethei18nnotificationsettingssettingsdisplay">Configure the i18nNotificationSettings settings display.</h3>
+
+<pre><code>angular.extend(i18nNotificationSettings, i18nNotificationSettings, {
+            fatal: 'pushForCurrentRoute',
+            nonFatal: 'notify',
+            routeChange: 'pushForCurrentRoute'
+        });
+</code></pre>
+
+<h2 id="configureanoptionalonroutechangeerrornotification">Configure an optional on route change error notification.</h3>
+
+<pre><code>$scope.$on('$routeChangeError', function(event, current, previous, rejection){
+            i18nNotifications[i18nNotificationSettings.routeChange]('errors.route.changeError', 'error', {}, {rejection: rejection});
+        });
+</code></pre>
+
+<h2 id="setthewatchforthenotificationsarraychangeachangeinlengthwilltriggerauinotification">Set the watch for the notifications array change.  A change in length will trigger a UI notification.</h3>
+
+<pre><code>$scope.$watch('notifications.getCurrent().length', function() {
+            var curNotifications = $scope.notifications.getCurrent();
+            if(curNotifications.length &gt; 0) {
+                angular.forEach(curNotifications, function(value){
+                    toastr[value.type](value.message);
+                });
+            }
+        });
+</code></pre>
+
+<h2 id="settheoptionaldelegatefunctionforbypassingstorednotificationsalltogether">Set the optional delegate function for bypassing stored notifications all together.</h3>
+
+<pre><code>$scope.notifications.deligate = {
+            config: (function() {
+                toastr.options.closeButton = true;
+                toastr.options.fadeOut = 10000;
+            })(),
+            notify: function(value) {
+                toastr[value.type](value.message);
+            }
+        };
+</code></pre>
+
+<h2 id="thecompletedcontroller">The Completed Controller</h3>
+
+<p>index.html</p>
+
+<pre><code>&lt;div class="navbar navbar-default navbar-fixed-top" ng-controller="MenuCtrl"&gt;
+</code></pre>
+
+<p>main module run phase</p>
+
+<pre><code>angular.module('ccApp').controller('appCtrl', ['$scope', 'i18nNotifications', 'version', 'i18nNotificationSettings', function($scope, i18nNotifications, version, i18nNotificationSettings) {
+
+    /*
+     * Version
+     */
+    $scope.version = version;
+
+    /*
+     * Notifications
+     */
+    $scope.notifications = i18nNotifications;
+
+    // configure the i18nNotifications settings display type
+    angular.extend(i18nNotificationSettings, i18nNotificationSettings, {
+            fatal: 'pushForCurrentRoute',
+            nonFatal: 'notify',
+            routeChange: 'pushForCurrentRoute'
+        });
+
+    $scope.$on('$routeChangeError', function(event, current, previous, rejection){
+            i18nNotifications[i18nNotificationSettings.routeChange]('errors.route.changeError', 'error', {}, {rejection: rejection});
+        });
+
+    /*
+     * Toastr
+     */
+    //TODO: is this efficient - the watch?
+    $scope.$watch('notifications.getCurrent().length', function() {
+        var curNotifications = $scope.notifications.getCurrent();
+        if(curNotifications.length &gt; 0) {
+            angular.forEach(curNotifications, function(value){
+                toastr[value.type](value.message);
+            });
+        }
+    });
+
+    $scope.notifications.deligate = {
+        config: (function() {
+            toastr.options.closeButton = true;
+            toastr.options.fadeOut = 10000;
+        })(),
+        notify: function(value) {
+            toastr[value.type](value.message);
+        }
+    };
+}]);
+</code></pre>
+
+<h1 id="integratingwithexternaltoolsornativeanglularjstemplatestodisplaynotifications">Integrating with external tools or native AnglularJS templates to display notifications.</h2>
+
+<p>Watching the notifications length of the notifications array presents many options for displaying notifications.</p>
+
+<pre><code>Toastr Integration
+
+$scope.$watch('notifications.getCurrent().length', function() {
+    var curNotifications = $scope.notifications.getCurrent();
+    if(curNotifications.length &gt; 0) {
+        angular.forEach(curNotifications, function(value){
+            toastr[value.type](value.message);
+        });
+    }
+});
+</code></pre>
+
+<p>OR</p>
+
+<pre><code>AngularJS Templates
+
+&lt;div ng-class="['alert', 'alert-'+notification.type]" ng-repeat="notification in notifications.getCurrent()"&gt;
+    &lt;button class="close" ng-click="removeNotification(notification)"&gt;x&lt;/button&gt;
+    {{notification.message}}
+&lt;/div&gt;
+</code></pre>
+
+<h1 id="generatingcustomnotifications">Generating Custom Notifications</h2>
+
+<p><strong>Fatal Notifications</strong></p>
+
+<p>The {@Link common.exceptionHandlerFactory exceptionHandlerFactory} provides the means to throw exceptions with a
+notification object.</p>
+
+<p>For the message key:</p>
+
+<pre><code>"errors.fatal.error": "Error: An unrecoverable error has occurred - {{time}}."
+</code></pre>
+
+<p>In JavaScript:</p>
+
+<pre><code>throw {
+     msgKey: 'errors.fatal.error'
+     params: {
+        time: moment().format('h:mm:ss a')
+    },
+}
+</code></pre>
+
+<p><strong>Non-fatal Notifications</strong></p>
+
+<p>Notifications can be triggered on the UI for various levels of severity.</p>
+
+<p>For toastr integrations, the levels of severity match those of the API e.g. warning, success, etc.  Do not use 'error'
+but instead throw an exception as described above under fatal exceptions.</p>
+
+<p>For a message key:</p>
+
+<pre><code>  "schedule.errors.list.wrong.company": "Wrong company for carrier list. Company Id: {{id}}",
+</code></pre>
+
+<p>In JavaScript</p>
+
+<pre><code>  i18nNotifications.pushForCurrentRoute('schedule.errors.list.wrong.company', 'warning', {id: 123}, {});
+
+  OR
+
+  i18nNotifications.notify('schedule.errors.list.wrong.company', 'warning', {id: 123}, {});
+</code></pre>
+
+<h1 id="notificationsrelatedtoxhrfatalandnonfatalerrors">Notifications Related to XHR Fatal and Non-fatal errors.</h2>
+
+<p>Notifications related to fatal and non-fatal errors are seamlessly handled by the
+<a href="#/tutorial/common.exceptionHandler.exceptonHandler">exceptionHandler</a> service</p></div>

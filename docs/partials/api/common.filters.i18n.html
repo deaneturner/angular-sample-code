@@ -1,0 +1,43 @@
+<h1><code ng:non-bindable="">i18n</code>
+<span class="hint">(filters in module <code ng:non-bindable="">common</code>
+)</span>
+</h1>
+<div><h2 id="Description">Description</h2>
+<div class="description"><p>Localization for expressions using a filter.</p></div>
+<h2 id="Usage">Usage</h2>
+<div class="usage"><h3 id="In.HTML.Template.Binding">In HTML Template Binding</h3>
+<div class="in-html-template-binding"><code ng:non-bindable="">{{ i18n_expression | i18n:[parameters] }}</code>
+</div>
+<h3 id="In.JavaScript">In JavaScript</h3>
+<div class="in-javascript"><code ng:non-bindable="">$filter('i18n')(msgKey, [parameters])</code>
+</div>
+<h3 id="Parameters">Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">msgKey – {string} – </code>
+<ul>
+<li>The message key value to be translated.</li>
+</ul></li>
+<li><code ng:non-bindable="">[parameters] – {Object} – </code>
+<ul>
+<li>The string replacement parameters to be injected into the message key.</li>
+</ul></li>
+</ul>
+<h3 id="Returns">Returns</h3>
+<div class="returns"><code ng:non-bindable="">{string}</code>
+– <p>The translated message value.</p></div>
+</div>
+<h2 id="Example">Example</h2>
+<div class="example"><p>For a message key equal to:</p>
+
+<pre><code> first.and.last: 'My first name is {firstName} and my last is {lastName}.'
+</code></pre>
+
+<p>In an expression:</p>
+
+<pre><code> {{ 'first.and.last' | i18n:{ firstName: 'foo', lastName: 'bar'} }}
+</code></pre>
+
+<p>Will return:</p>
+
+<pre><code> My first name is foo and my last is bar.
+</code></pre></div>
+</div>

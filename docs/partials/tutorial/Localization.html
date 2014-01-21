@@ -1,0 +1,61 @@
+<h1><code ng:non-bindable=""></code>
+<span class="hint"></span>
+</h1>
+<div><h1 id="localization">Localization</h2>
+
+<hr />
+
+<p>Localization is used to render the proper string translations in markup, notifications, and for exception handling.
+The localization translation key/value pairs must be initialized during application startup, typically in the run portion
+of the main module.</p>
+
+<h2 id="enablinglocalization">Enabling Localization</h3>
+
+<ul>
+<li><p>Include the proper top-level, application, module dependency.  In most cases, common.exceptionHandler will provide
+an all encompassing dependency for the localization and notification modules.</p>
+
+<p>In most cases, common.exceptionHandler will provide an all encompassing dependency for the localization and notification modules.</p>
+
+<pre><code>angular.module('ccApp', [
+        ...
+        'common.exceptionHandler'
+</code></pre></li>
+</ul>
+
+<h2 id="intialization">Intialization</h3>
+
+<p>To initialize and retrieve the localization key value pairs from a module:</p>
+
+<pre><code>  .run(function (i18nMessages) {
+        i18nMessages.init('locales', 'en');
+    });
+</code></pre>
+
+<h2 id="filtersasusedinexpressionstoaffectmarkup">Filters (as used in expressions to affect markup)</h3>
+
+<pre><code>{{ 'first.and.last' | i18n:{ firstName: 'foo', lastName: 'bar'} }}
+</code></pre>
+
+<p>See <a href="index.html#/api/common.filters:i18n">common.filters:i18n</a></p>
+
+<h2 id="javascript">JavaScript</h3>
+
+<p>For a message key equal to:</p>
+
+<pre><code>first.and.last: 'My first name is {(firstName}} and my last is {{lastName}}.'
+</code></pre>
+
+<p>In JavaScript:</p>
+
+<pre><code>localizationMessages.get('first.and.last', {
+             firstName: 'foo',
+             lastName: 'bar'
+         });
+</code></pre>
+
+<p>See <a href="index.html#/api/common.localizedMessages:localizedMessages">common.localizedMessages:localizedMessages</a></p>
+
+<h2 id="notifications">Notifications</h3>
+
+<h2 id="exceptionhandling">Exception Handling</h3></div>

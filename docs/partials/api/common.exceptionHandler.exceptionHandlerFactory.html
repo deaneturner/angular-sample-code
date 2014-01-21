@@ -1,0 +1,28 @@
+<h1><code ng:non-bindable="">exceptionHandlerFactory</code>
+<span class="hint">(exceptionHandler in module <code ng:non-bindable="">common</code>
+)</span>
+</h1>
+<div><h2 id="Description">Description</h2>
+<div class="description"><p>Overrides the default exception handler and instead, throws exceptions that will utilize the
+<a href="#/api/common.i18nNotifications:i18nNotifications">i18nNotifications</a> to produce notifications of fatal errors.</p>
+
+<p>Throwing an exception object will both notify the user of a fatal error via the UI, and log the error to the console.</p>
+
+<p>Note: For non-fatal notifications use the <a href="#/api/common.i18nNotifications:i18nNotifications">i18nNotifications</a> service.  This service
+provides the means to alter the message type e.g. warning, success, etc.</p></div>
+<h2 id="Example">Example</h2>
+<div class="example"><p>For the message key:</p>
+
+<pre><code>"errors.fatal.error": "Error: An unrecoverable error has occurred - {{time}}."
+</code></pre>
+
+<p>In JavaScript:</p>
+
+<pre><code>throw {
+     msgKey: 'errors.fatal.error'
+     params: {
+        time: moment().format('h:mm:ss a')
+    },
+}
+</code></pre></div>
+</div>

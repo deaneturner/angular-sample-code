@@ -1,0 +1,140 @@
+<h1><code ng:non-bindable=""></code>
+<span class="hint"></span>
+</h1>
+<div><h1 id="developernotes">Developer Notes</h2>
+
+<hr />
+
+<h2 id="installationandbuild">Installation and Build</h3>
+
+<p>See the README.md file located a the root of this project for details instructions on both development and production builds.</p>
+
+<h2 id="developmentworkflow">Development Workflow</h3>
+
+<p>This project built using a combination technologies: Node.js, Git, SASS, Yeoman, Grunt, and Bower.</p>
+
+<ul>
+<li><p>Compile Sass into CSS and generate necessary files.  This will load the resultant main.css file in the styles directory.
+The dev task will also generate the documentation.</p>
+
+<pre><code>&gt; grunt dev
+</code></pre>
+
+<p>Note: compass:dev will need to be run after modifying SASS or CSS files, as well as running the production build.</p></li>
+<li><p>Start the grunt server for Tomcat.  (Alternatively, start the watch task to monitor changes e.g. grunt watch)</p>
+
+<pre><code>&gt; grunt serve
+</code></pre>
+
+<p>The grunt server allows dynamic changes to occur without refreshing the browser - using a Tomcat server (html, js, sass)</p></li>
+<li><p>Monitor the server or watch task, as it is important for the following reasons:</p>
+
+<p>JSHint compliance - Code consistency and accuracy is a prerequisite for the production build (the build will not proceed successfully
+ without a successful JSHint task).  Also, it supports code consistency and good level of language compliance.  The watch task will run JSHint for
+ each JavaScript file change.</p>
+
+<p>Dynamic Compass / SASS compilation - The watch task will recompile and load the main.css file when relevant files change.</p>
+
+<p>Test Execution - The watch task will run unit tests when relevant files change.</p></li>
+<li><p>Periodically run the production build to assure that code minification is working properly.</p>
+
+<p>AngularJS is susceptible to breaking when minified (see relevant material on AngularJS minification).  Verification requires
+the opening of the distribution's index.html file in a browser and inspecting the console for JavaScript load errors.</p></li>
+</ul>
+
+<h2 id="compasssassandcss">Compass / SASS and CSS</h3>
+
+<p>To generate the main.css file for development:</p>
+
+<pre><code>&gt; grunt compass:dev
+</code></pre>
+
+<p>or</p>
+
+<pre><code>&gt; grunt dev
+</code></pre>
+
+<h2 id="jshint">JSHint</h3>
+
+<p>To run JSHint on the source code:</p>
+
+<pre><code>&gt; grunt jshint
+</code></pre>
+
+<h2 id="documentation">Documentation</h3>
+
+<p>Documentation will be generated into a docs directory under the project root via these tasks.</p>
+
+<pre><code>&gt; grunt dev
+</code></pre>
+
+<p>or</p>
+
+<pre><code>&gt; grunt serve
+</code></pre>
+
+<h2 id="exceptionhandling">Exception Handling</h3>
+
+<p>Global exception handling addresses XHR failures.  It notifies the user via a
+<a href="index.html#/api/common.i18nNotifications:i18nNotifications">i18nNotifications</a> service and logging to console.</p>
+
+<p><strong>Developers are not required to write failure code for XHR callbacks.</strong></p>
+
+<p>For a full description of this feature see:</p>
+
+<ul>
+<li>The <a href="index.html#/tutorial/Exception%20Handling">Exception Handling</a> guide</li>
+<li>The <a href="index.html#/api/common.exceptionHandler:exceptionHandler">exceptionHandler</a> interceptor.</li>
+</ul>
+
+<h2 id="notifications">Notifications</h3>
+
+<h3 id="customnotificationscanbetriggeredontheuiforvariouslevelsofseverity">Custom Notifications can be triggered on the UI for various levels of severity.</h4>
+
+<p>For toastr integrations, the levels of severity match those of the API e.g. warning, success, etc.</p>
+
+<p>For a message key:</p>
+
+<pre><code>  "schedule.errors.list.wrong.company": "Wrong company for carrier list. Company Id: {{id}}",
+</code></pre>
+
+<p>In JavaScript</p>
+
+<pre><code>  i18nNotifications.pushForCurrentRoute('schedule.errors.list.wrong.company', 'warning', {id: 123}, {});
+</code></pre>
+
+<p>or</p>
+
+<pre><code>  i18nNotifications.notify('schedule.errors.list.wrong.company', 'warning', {id: 123}, {});
+</code></pre>
+
+<h3 id="notificationsrelatedtoxhrfatalandnonfatalerrors">Notifications Related to XHR Fatal and Non-fatal errors.</h4>
+
+<p>Notifications related to fatal and non-fatal errors are seamlessly handled by the
+   <a href="index.html#/api/common.exceptionHandler:exceptionHandler">exceptionHandler</a> interceptor.</p>
+
+<h3 id="forafulldescriptionofthesefeaturessee">For a full description of these features see:</h4>
+
+<ul>
+<li>The <a href="index.html#/tutorial/Notifications">Notifications</a> guide</li>
+</ul>
+
+<h2 id="locales">Locales</h3>
+
+<p>Locales keys are based on Structure, Feature, and Function .</p>
+
+<ul>
+<li>The <a href="index.html#/tutorial/Locales">Locales</a> guide</li>
+</ul>
+
+<h2 id="userprofile">User Profile</h3>
+
+<p>The user profile is stored on the $rootScope for easy access.</p>
+
+<pre><code> {{user.info.companyName}}
+</code></pre>
+
+<p>or</p>
+
+<pre><code>  $rootScope.user.info.companyName
+</code></pre></div>

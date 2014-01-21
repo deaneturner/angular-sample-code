@@ -1,0 +1,100 @@
+<h1><code ng:non-bindable="">notifications</code>
+<span class="hint">(notifications in module <code ng:non-bindable="">common</code>
+)</span>
+</h1>
+<div><h2 id="Description">Description</h2>
+<div class="description"><p>A service to hold and manage notifications.</p>
+
+<p>Notifications are stored according to current route, next route, and/or sticky (should be available across all routes).</p>
+
+<p>Next route notifications must be explicitly added to tne next route array via the API.  Otherwise, current route notifications are lost
+on successful route changes.</p>
+
+<p>If none of the storage options above are applicable or desired, the <a href="#/api/common.i18nNotifications:i18nNotifications">i18nNotifications</a> service
+has a <a href="#/api/common.i18nNotifications:i18nNotifications#notify">notify</a> method which directly notifies without using storage.</p>
+
+<pre><code> A deligate method is required to use this option.  For example:
+
+ $scope.notifications.deligate = {
+     config: (function() {
+        toastr.options.closeButton = true;
+        toastr.options.fadeOut = 10000;
+    })(),
+    notify: function(value) {
+        toastr[value.type](value.message);
+    }
+};
+</code></pre></div>
+<div class="member method"><h2 id="Methods">Methods</h2>
+<ul class="methods"><li><h3 id="addNotification">addNotification(notificationsArray, notificationObj)</h3>
+<div class="addnotification"><p>Add the notification to the given array.</p><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">notificationsArray – {Array} – </code>
+<p>The notifications array to add the notification to i.e. STICKY, ROUTE_CURRENT, or ROUTE_NEXT.</p></li>
+<li><code ng:non-bindable="">notificationObj – {Object} – </code>
+<p>The notification object in the form of {message: 'A message', type: 'error')</p></li>
+</ul>
+<h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{object}</code>
+– <p>The notification object.</p></div>
+</div>
+</li>
+<li><h3 id="getCurrent">getCurrent()</h3>
+<div class="getcurrent"><p>Gets the current notifications (stick and current route).</p><h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{array}</code>
+– <p>The current and sticky notifications.</p></div>
+</div>
+</li>
+<li><h3 id="pushForCurrentRoute">pushForCurrentRoute()</h3>
+<div class="pushforcurrentroute"><p>Adds a notification to the current route notifications array.</p><h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{array}</code>
+– <p>The current route notifications.</p></div>
+</div>
+</li>
+<li><h3 id="pushForNextRoute">pushForNextRoute()</h3>
+<div class="pushfornextroute"><p>Adds a notification to the next route notifications array.</p><h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{array}</code>
+– <p>The next route notifications.</p></div>
+</div>
+</li>
+<li><h3 id="pushSticky">pushSticky()</h3>
+<div class="pushsticky"><p>Adds a notification to the sticky notifications array.</p><h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{array}</code>
+– <p>The sticky notifications.</p></div>
+</div>
+</li>
+<li><h3 id="remove">remove(notification)</h3>
+<div class="remove"><p>Removes a notification from any or all arrays (stick, current, and/or next).</p><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">notification – {Object} – </code>
+<p>The notification to remove from any or all arrays (sticky, current, and/or next).</p></li>
+</ul>
+</div>
+</li>
+<li><h3 id="removeAll">removeAll()</h3>
+<div class="removeall"><p>Removes all notifications from a given type i.e. STICKY, ROUTE_CURRENT, or ROUTE_NEXT</p></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="Properties">Properties</h2>
+<ul class="properties"><li><h3 id="notifications">notifications</h3>
+<div class="notifications"><p>Holds the notifications according to persistence across route changes.
+- Sticky notifications persists across all route changes until explicitly removed.
+- Current route notifications persist for the current route and are lost upon a route change.
+- Next route notifications are carried over to the next route. Next route notifications are transferred
+upon a successful route change - where they become current route notifications.</p><h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{Object}</code>
+– <p>An object consisting of arrays: STICKY, ROUTE_CURRENT, and ROUTE_NEXT</p></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="Events">Events</h2>
+<ul class="events"><li><h3 id="routeChangeSuccess">routeChangeSuccess</h3>
+<div class="routechangesuccess"><p>Copies the next route notification array into the current notifications array.  Empties the current
+and next notification arrays.  This functionality allows selected notifications (those explicitly added to the
+next route array) to be carried over to the next route.</p><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
