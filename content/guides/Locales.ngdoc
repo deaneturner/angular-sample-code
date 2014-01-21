@@ -1,0 +1,56 @@
+@ngdoc overview
+@name Locales
+@description
+
+
+#Locales
+
+---
+
+#Keys based on Structure, Feature, and Function
+
+ - header and footers are structural
+ - dashboard, descrepancies, reports, and schedule are features
+ - errors are functional
+ - Notice schedule.errors is for non-fatal errors.
+
+For example:
+
+    {
+        "header.title": "Carrier Connect II",
+        "header.nav.tab.0": "Dashboard",
+        "header.nav.tab.1": "Discrepancies",
+        "header.nav.tab.2": "Reports",
+        "header.nav.tab.3": "Schedule",
+
+        "footer.company.version": "F.W.Davison & Company - Current version is v{{version}}.",
+
+        "dashboard.title": "Dashboard",
+        "dashboard.chart.title": "Carrier File Transmission Metrics",
+        "dashboard.table.title": "Latest Events",
+        "dashboard.table.column.0": "#",
+        "dashboard.table.column.1": "Carrier Name",
+        "dashboard.table.column.2": "Title",
+        "dashboard.table.column.3": "Subject",
+        "dashboard.table.column.4": "Description",
+        "dashboard.panel.rail.left": "Current Status",
+
+        "schedule.errors.carrierlist.is.incomplete": "Carrier list is incomplete. Company Id: {{id}}",
+        "schedule.errors.carrierlist.wrong.company": "Wrong company for carrier list. Company Id: {{id}}",
+
+        "discrepancies.title": "Discrepancies",
+        "discrepancies.panel.rail.left": "Carriers",
+
+        "reports.title": "Reports",
+        "reports.panel.rail.left": "Carriers",
+
+        "schedule.title": "Schedule",
+        "schedule.table.title": "Current Progress",
+
+        "errors.route.changeError": "Route change error",
+        "errors.authentication": "Unable to retrieve a resource due to an authentication error - {{time}}.",
+        "errors.authorization": "Unable to retrieve a resource due to an authorization error - {{time}}.",
+        "errors.server":   "Unable to retrieve a resource due to a internal server error - {{time}}.",
+        "errors.error": "Unable to retrieve a resource due to a general server error - {{time}}.",
+        "errors.fatal.error": "Error: An unrecoverable error has occurred - {{time}}."
+    }

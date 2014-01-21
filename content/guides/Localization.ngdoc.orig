@@ -1,0 +1,57 @@
+@ngdoc overview
+@name Localization
+@description
+
+
+#Localization
+
+---
+
+Localization is used to render the proper string translations in markup, notifications, and for exception handling.
+The localization translation key/value pairs must be initialized during application startup, typically in the run portion
+of the main module.
+
+##Enabling Localization
+
+ - Include the proper top-level, application, module dependency.  In most cases, common.exceptionHandler will provide
+ an all encompassing dependency for the localization and notification modules.
+
+ In most cases, common.exceptionHandler will provide an all encompassing dependency for the localization and notification modules.
+
+        angular.module('ccApp', [
+                ...
+                'common.exceptionHandler'
+
+## Intialization
+
+To initialize and retrieve the localization key value pairs from a module:
+
+      .run(function (i18nMessages) {
+            i18nMessages.init('locales', 'en');
+        });
+
+## Filters (as used in expressions to affect markup)
+
+    {{ 'first.and.last' | i18n:{ firstName: 'foo', lastName: 'bar'} }}
+
+See <a href="index.html#/api/common.filters:i18n">common.filters:i18n</a>
+
+## JavaScript
+
+For a message key equal to:
+
+    first.and.last: 'My first name is {(firstName}} and my last is {{lastName}}.'
+
+In JavaScript:
+
+    localizationMessages.get('first.and.last', {
+                 firstName: 'foo',
+                 lastName: 'bar'
+             });
+
+See <a href="index.html#/api/common.localizedMessages:localizedMessages">common.localizedMessages:localizedMessages</a>
+
+## Notifications
+
+
+## Exception Handling

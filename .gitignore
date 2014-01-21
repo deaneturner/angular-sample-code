@@ -1,0 +1,34 @@
+# Classes #
+*.class
+
+# Package Files #
+*.war
+*.ear
+
+# Win & Mac File #
+.DS_Store
+.tmp
+
+# IntelliJ Project #
+.idea/
+*.iml
+
+# Bower Components #
+app/bower_components
+
+# CSS and SASS #
+.sass-cache
+app/styles/main.css
+
+# Dist #
+dist/
+
+# Build #
+build/
+
+# Node.js #
+node_modules
+
+# Ng-docs #
+docs/
+

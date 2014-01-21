@@ -1,0 +1,19 @@
+{
+  "accounts":[
+	{"name":	   "FWDCO Dev",
+         "peoId":	   "1*D",
+         "url":		   "http://reportapps.fwdco.com/cc",
+         "username":	   "ccdev",
+         "key":	           "asdfQWER1234",
+         "active":         true,
+	 "purchasedFiles":[
+                            "MetlifeCensus",
+	                    "Principal401k",
+                "Principal401kdupe",
+			    "DeltaDental834",
+			    "HumanaBenefits",
+			    "BlueCrossBlueShield834"
+	                  ]
+	}
+  ]
+}
