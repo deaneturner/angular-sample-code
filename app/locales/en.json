@@ -7,7 +7,7 @@
     "header.session.greeting": "Hello",
     "header.session.end": "Logout",
 
-    "footer.company.version": "Copyright © 2013-2014 F.W.Davison & Company - Carrier Connect II v{{version}}.",
+    "footer.company.version": "Copyright © 2013-2014 someco & Company - Carrier Connect II v{{version}}.",
 
     "dashboard.title": "Dashboard",
     "dashboard.chart.title": "Carrier File Transmission Metrics",
@@ -19,8 +19,8 @@
     "dashboard.table.column.4": "Description",
     "dashboard.panel.rail.left": "Carriers Status: All Running.",
 
-    "schedule.errors.carrierlist.is.incomplete": "Carrier list is incomplete. Company Id: {{id}}",
-    "schedule.errors.carrierlist.wrong.company": "Wrong company for carrier list. Company Id: {{id}}",
+    "schedule.errors.list.is.incomplete": "Carrier list is incomplete. Company Id: {{id}}",
+    "schedule.errors.list.wrong.company": "Wrong company for carrier list. Company Id: {{id}}",
 
     "discrepancies.title": "Discrepancies",
     "discrepancies.panel.rail.left": "Carriers",

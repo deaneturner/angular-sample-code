@@ -94,15 +94,15 @@ For toastr integrations, the levels of severity match those of the API e.g. warn
 
  For a message key:
 
-      "schedule.errors.carrierlist.wrong.company": "Wrong company for carrier list. Company Id: {{id}}",
+      "schedule.errors.list.wrong.company": "Wrong company for carrier list. Company Id: {{id}}",
 
  In JavaScript
 
-      i18nNotifications.pushForCurrentRoute('schedule.errors.carrierlist.wrong.company', 'warning', {id: 123}, {});
+      i18nNotifications.pushForCurrentRoute('schedule.errors.list.wrong.company', 'warning', {id: 123}, {});
 
  or
 
-      i18nNotifications.notify('schedule.errors.carrierlist.wrong.company', 'warning', {id: 123}, {});
+      i18nNotifications.notify('schedule.errors.list.wrong.company', 'warning', {id: 123}, {});
 
 ###Notifications Related to XHR Fatal and Non-fatal errors.
 

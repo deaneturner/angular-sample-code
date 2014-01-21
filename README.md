@@ -1,15 +1,13 @@
-cc2
+AngularJS Example Code
 ===
 
-#Carrier Connect II
+#AngularJS example code written by Deane Turner
 
-
-The start of the Carrier Connect re-write.
 Tue Oct 29 13:23:48 EDT 2013
 
 #Log in
 
-<a href="http://reportapps.fwdco.com/cc/ClientLogin" target="_blank">http://reportapps.fwdco.com/cc/ClientLogin</a>
+<a href="http://somedomain.com/cc/ClientLogin" target="_blank">http://somedomain.com/cc/ClientLogin</a>
 
 # Installation and Setup
 
@@ -296,5 +294,5 @@ This application structure was built using Yeoman (<a href="http://yeoman.io/" t
 
 
  Data Base Schema
-   https://docs.google.com/a/fwdco.com/spreadsheet/ccc?key=0AnYC49KOONJRdEZucU1fZ3dxYzZhc3NFRkZfc1l0bWc#gid=0
+   https://docs.google.com/a/somedomain.com/spreadsheet/ccc?key=0AnYC49KOONJRdEZucU1fZ3dxYzZhc3NFRkZfc1l0bWc#gid=0
 

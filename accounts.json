@@ -1,8 +1,8 @@
 {
   "accounts":[
-	{"name":	   "FWDCO Dev",
+	{"name":	   "somedomain Dev",
          "peoId":	   "1*D",
-         "url":		   "http://reportapps.fwdco.com/cc",
+         "url":		   "http://reportapps.somedomain.com/cc",
          "username":	   "ccdev",
          "key":	           "asdfQWER1234",
          "active":         true,

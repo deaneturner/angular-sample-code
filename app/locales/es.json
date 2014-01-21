@@ -9,7 +9,7 @@
     "header.session.language.2": "_es_Spanish",
     "header.session.end": "_es_Logout",
 
-    "footer.company.version": "_es_Copyright © 2013-2014 F.W.Davison & Company - Carrier Connect II v{{version}}.",
+    "footer.company.version": "_es_Copyright © 2013-2014 someco & Company - Carrier Connect II v{{version}}.",
 
     "dashboard.title": "_es_Dashboard",
     "dashboard.chart.title": "_es_Carrier File Transmission Metrics",
@@ -21,8 +21,8 @@
     "dashboard.table.column.4": "_es_Description",
     "dashboard.panel.rail.left": "_es_Carriers Status: All Running.",
 
-    "schedule.errors.carrierlist.is.incomplete": "_es_Carrier list is incomplete. Company Id: {{id}}",
-    "schedule.errors.carrierlist.wrong.company": "_es_Wrong company for carrier list. Company Id: {{id}}",
+    "schedule.errors.list.is.incomplete": "_es_Carrier list is incomplete. Company Id: {{id}}",
+    "schedule.errors.list.wrong.company": "_es_Wrong company for carrier list. Company Id: {{id}}",
 
     "discrepancies.title": "_es_Discrepancies",
     "discrepancies.panel.rail.left": "_es_Carriers",

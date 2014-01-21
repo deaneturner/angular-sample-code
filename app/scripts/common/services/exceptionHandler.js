@@ -34,9 +34,9 @@
  * {@link common.i18nNotifications:i18nNotifications i18nNotifications} service notification objects to provide
  * translation and string parameter replacement.
  *
- *      {"errors": {"msgKey":"schedule.errors.carrierlist.is.incomplete"}
+ *      {"errors": {"msgKey":"schedule.errors.list.is.incomplete"}
  *
- *      {"errors": [{"msgKey":"schedule.errors.carrierlist.is.incomplete","params":{"id":123}},{"msgKey":"schedule.errors.carrierlist.wrong.company","params":{"id":123}}]
+ *      {"errors": [{"msgKey":"schedule.errors.list.is.incomplete","params":{"id":123}},{"msgKey":"schedule.errors.list.wrong.company","params":{"id":123}}]
  *
  *
  *
@@ -44,7 +44,7 @@
  *
  * No failure callback is necessary:
  *
- *      hrp.getCarrierList().
+ *      hrp.getlist().
  *        success(function(data) {
  *          $scope.carrierSelector = data.file_list;
  *        });
@@ -55,7 +55,7 @@
  *
  * For an XHR response containing an errors parameter:
  *
- *      {"errors": [{"msgKey":"schedule.errors.carrierlist.is.incomplete","params":{"id":123}},{"msgKey":"schedule.errors.carrierlist.wrong.company","params":{"id":123}}]
+ *      {"errors": [{"msgKey":"schedule.errors.list.is.incomplete","params":{"id":123}},{"msgKey":"schedule.errors.list.wrong.company","params":{"id":123}}]
  *
  * The interceptor will both notify the user of a non-fatal error via the UI, and log the error to the console.
  */

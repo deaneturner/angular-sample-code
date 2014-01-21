@@ -10,11 +10,11 @@
  *
  * For a message key:
  *
- *      "schedule.errors.carrierlist.wrong.company": "Wrong company for carrier list. Company Id: {{id}}",
+ *      "schedule.errors.list.wrong.company": "Wrong company for carrier list. Company Id: {{id}}",
  *
  * In JavaScript
  *
- *      i18nNotifications.pushForCurrentRoute('schedule.errors.carrierlist.wrong.company', 'warning', {id: 123}, {});
+ *      i18nNotifications.pushForCurrentRoute('schedule.errors.list.wrong.company', 'warning', {id: 123}, {});
  *
  */
 angular.module('common.i18nNotifications', ['common.notifications', 'common.localizedMessages']).

@@ -23,7 +23,7 @@ For example:
         "header.nav.tab.2": "Reports",
         "header.nav.tab.3": "Schedule",
 
-        "footer.company.version": "F.W.Davison & Company - Current version is v{{version}}.",
+        "footer.company.version": "someco & Company - Current version is v{{version}}.",
 
         "dashboard.title": "Dashboard",
         "dashboard.chart.title": "Carrier File Transmission Metrics",
@@ -35,8 +35,8 @@ For example:
         "dashboard.table.column.4": "Description",
         "dashboard.panel.rail.left": "Current Status",
 
-        "schedule.errors.carrierlist.is.incomplete": "Carrier list is incomplete. Company Id: {{id}}",
-        "schedule.errors.carrierlist.wrong.company": "Wrong company for carrier list. Company Id: {{id}}",
+        "schedule.errors.list.is.incomplete": "Carrier list is incomplete. Company Id: {{id}}",
+        "schedule.errors.list.wrong.company": "Wrong company for carrier list. Company Id: {{id}}",
 
         "discrepancies.title": "Discrepancies",
         "discrepancies.panel.rail.left": "Carriers",

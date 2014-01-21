@@ -80,7 +80,7 @@ exports.config = {
     // You can specify a file containing code to run by setting onPrepare to
     // the filename string.
     onPrepare: function () {
-        browser.driver.get('http://reportapps.fwdco.com/cc/ClientLogin');
+        browser.driver.get('http://reportapps.somedomain.com/cc/ClientLogin');
 
         browser.driver.findElement(by.id('user_id')).sendKeys('DAVE');
         browser.driver.findElement(by.id('password')).sendKeys('asdfQWER1234');

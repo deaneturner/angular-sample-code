@@ -231,7 +231,7 @@ describe('ExceptionHandler handling of non-fatal XHR responses - option: pushFor
 
         $httpBackend
             .whenGET('userinfo')
-            .respond({"errors": {"msgKey":"schedule.errors.carrierlist.is.incomplete"},"user_message":"","username":"ccdev","error_message":"","calling_class":"com.fwdco.webservice.ScorpeoWebService","method_name":"WSP.CC.GET.FILE.LIST","error_code":"0","file_list":[["job_name","description"],["MetlifeCensus","Met Life Census"],["Principal401k","Principal 401 K"],["DeltaDental834","Delta Dental 834"],["HumanaBenefits","Humana Benefits"],["BlueCrossBlueShield834","Blue Cross"]]});
+            .respond({"errors": {"msgKey":"schedule.errors.list.is.incomplete"},"user_message":"","username":"ccdev","error_message":"","calling_class":"com.somedomain.webservice.ScorpeoWebService","method_name":"WSP.CC.GET.FILE.LIST","error_code":"0","file_list":[["job_name","description"],["MetlifeCensus","Met Life Census"],["Principal401k","Principal 401 K"],["DeltaDental834","Delta Dental 834"],["HumanaBenefits","Humana Benefits"],["BlueCrossBlueShield834","Blue Cross"]]});
 
 
         //simulate response
@@ -239,7 +239,7 @@ describe('ExceptionHandler handling of non-fatal XHR responses - option: pushFor
 
         expect(i18nNotifications.getCurrent().length).toEqual(1);
         expect(i18nNotifications.getCurrent()[0].type).toEqual('warning');
-        expect(i18nNotifications.getCurrent()[0].message).toEqual("?schedule.errors.carrierlist.is.incomplete?");  // test is not picking up on locales file!?
+        expect(i18nNotifications.getCurrent()[0].message).toEqual("?schedule.errors.list.is.incomplete?");  // test is not picking up on locales file!?
 
     });
 
@@ -251,7 +251,7 @@ describe('ExceptionHandler handling of non-fatal XHR responses - option: pushFor
 
         $httpBackend
             .whenGET('userinfo')
-            .respond({"errors": [{"msgKey":"schedule.errors.carrierlist.is.incomplete"},{"msgKey":"schedule.errors.carrierlist.wrong.company"}],"user_message":"","username":"ccdev","error_message":"","calling_class":"com.fwdco.webservice.ScorpeoWebService","method_name":"WSP.CC.GET.FILE.LIST","error_code":"0","file_list":[["job_name","description"],["MetlifeCensus","Met Life Census"],["Principal401k","Principal 401 K"],["DeltaDental834","Delta Dental 834"],["HumanaBenefits","Humana Benefits"],["BlueCrossBlueShield834","Blue Cross"]]});
+            .respond({"errors": [{"msgKey":"schedule.errors.list.is.incomplete"},{"msgKey":"schedule.errors.list.wrong.company"}],"user_message":"","username":"ccdev","error_message":"","calling_class":"com.somedomain.webservice.ScorpeoWebService","method_name":"WSP.CC.GET.FILE.LIST","error_code":"0","file_list":[["job_name","description"],["MetlifeCensus","Met Life Census"],["Principal401k","Principal 401 K"],["DeltaDental834","Delta Dental 834"],["HumanaBenefits","Humana Benefits"],["BlueCrossBlueShield834","Blue Cross"]]});
 
 
         //simulate response
@@ -259,7 +259,7 @@ describe('ExceptionHandler handling of non-fatal XHR responses - option: pushFor
 
         expect(i18nNotifications.getCurrent().length).toEqual(2);
         expect(i18nNotifications.getCurrent()[0].type).toEqual('warning');
-        expect(i18nNotifications.getCurrent()[0].message).toEqual("?schedule.errors.carrierlist.is.incomplete?");  // test is not picking up on locales file!?
+        expect(i18nNotifications.getCurrent()[0].message).toEqual("?schedule.errors.list.is.incomplete?");  // test is not picking up on locales file!?
 
     });
 });
