@@ -1,0 +1,86 @@
+<div class="table-responsive">
+    <div class="col-xs-12 col-sm-12  text-right">
+        <div>
+            {{resultSet.fromRecord}}{{resultSet.numberOfPages === 1 ? '' : ' - '}}{{resultSet.toRecord}} of {{resultSet.total}}
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr class="table-sort-row">
+            <!--selection column -->
+            <th ng-show="resultSet.selectionModel" class="" top-left-radiused>
+                <!-- select all checkbox -->
+                <input type="checkbox" ng-model="resultSet.selectionModel.allSelected"
+                       ng-change="resultSet.selectionModel.toggleSelected()">
+                <div class="dropdown" style="display:inline;">
+                    <button class="dropdown-toggle" type="button" id="filterBy"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span class="caret"></span>
+                    </button>
+                    <!-- selection size -->
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"
+                        style="color:black;font-weight:normal;min-width:60px;margin-left:4px;">
+                        <li ng-click="resultSet.selectionModel.setSelectionSize(resultSet.data.length)">
+                            All({{resultSet.data.length}})
+                        </li>
+                        <li ng-click="resultSet.selectionModel.setSelectionSize(resultSet.total)">
+                            All({{resultSet.total}})
+                        </li>
+                    </ul>
+                </div>
+            </th>
+            <!-- data columns -->
+            <th ng-repeat="column in columns" class="column-start"
+                ng-click="column.sortable && handlers.changeSorting(column.fieldName)">
+                {{column.title}}
+                <span class="pull-right"
+                      ng-class="column.sortable ? (resultSet.sortDescending ? 'fa fa-chevron-up' : 'fa fa-chevron-down') : ''"></span>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- table data -->
+        <tr ng-repeat="object in resultSet.data">
+            <!-- selected column -->
+            <td ng-show="resultSet.selectionModel"><input type="checkbox" ng-model="object.selected"
+                                                          ng-click="resultSet.selectionModel.onRowSelect()">
+            </td>
+            <!-- data columns -->
+            <td ng-class="getCellClasses(columns[$index].fieldName)"
+                ng-click="handlers.onCellClick(object[tableDef.selectKey], columns[$index].fieldName, object)"
+                ng-repeat="(key, value) in object"
+                ng-if="key != '$$hashKey' && (tableDef.fieldNames.indexOf(columns[$index].fieldName) !== -1)">
+                {{object[columns[$index].fieldName] | column : getColumnFilter(columns[$index].fieldName)}}
+            </td>
+        </tr>
+        <tr ng-show="resultSet.total == 0">
+            <td colspan="{{columns.length + (resultSet.selectionModel ? 1 : 0)}}">{{tableDef.msgEmptyResultset}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="col-xs-12 col-sm-12  text-right">
+        <div ng-hide="resultSet.numberOfPages === 1">
+            <!--page nav - previous next -->
+            <button ng-click="handlers.changePage(resultSet.currentPage - 1)"
+                    ng-disabled="resultSet.currentPage == 0">
+                &lt;
+            </button>
+            {{resultSet.currentPage + 1}} / {{resultSet.numberOfPages}}
+            <button ng-click="handlers.changePage(resultSet.currentPage + 1)"
+                    ng-disabled="resultSet.currentPage == resultSet.numberOfPages - 1">
+                &gt;
+            </button>
+            <!--jump to -->
+            <div class="form-group input-group"
+                 style="padding-left: 15px; margin-bottom:0px; display: inline;">
+                <div style="display: inline;">Jump to:</div>
+                <select style="max-width: 70px; display: inline;"
+                        ng-model="resultSet.currentPage"
+                        ng-change="handlers.changePage(resultSet.currentPage)"
+                        ng-options="n+1 for n in [] | range:0:resultSet.numberOfPages">
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

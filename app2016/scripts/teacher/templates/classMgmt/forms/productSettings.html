@@ -1,0 +1,76 @@
+<ng-form class="form-horizontal" name="productSettingsForm" novalidate autocomplete="off">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label for="tbd" class="col-sm-4 text-left">Select Product:</label>
+
+                <div class="col-sm-8">
+                    <select class="form-control" id="selectedProduct" name="selectedProduct"
+                            ng-disabled="displayMngr.mode === 'readonly'">
+                        <option value="">---Please select---</option> <!-- not selected / blank option -->
+                        <option ng-repeat="product in formMngr.productSettings.viewModel.productsList"
+                                value="{{product.systemId}}">
+                            {{product.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label for="tbd" class="col-sm-12 text-left ">Leveling</label>
+
+                <div class="col-sm-12">
+                    <div ng-repeat="(key, value) in resultSet.meta.classesOfUser.map">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="classesOfUser" name="classesOfUser" value="{{key}}"
+                                   ng-model="classesOfUser" ng-disabled="displayMngr.mode === 'readonly'"> {{value}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label for="tbd" class="col-sm-12 text-left">English Language Learner Options</label>
+
+                <div class="col-sm-12">
+                    <div ng-repeat="(key, value) in resultSet.meta.classesOfUser.map">
+                        <div class="clearfix" ng-if="$index % 2 == 0"></div>
+                        <label class="col-sm-6 radio-inline">
+                            <input type="radio" id="classesOfUser" name="classesOfUser" value="{{key}}"
+                                   ng-model="classesOfUser" ng-disabled="displayMngr.mode === 'readonly'"> {{value}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <div for="tbd" class="col-sm-8 text-right">Set Student's next level to</div>
+
+                <div class="col-sm-4">
+                    <select class="form-control" id="selectedProduct" name="selectedProduct"
+                            ng-disabled="displayMngr.mode === 'readonly'">
+                        <option value="">---Please select---</option> <!-- not selected / blank option -->
+                        <option ng-repeat="product in formMngr.productSettings.viewModel.productsList"
+                                value="{{product.systemId}}">
+                            {{product.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <div class="col-sm-12">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="classesOfUser" name="classesOfUser" value="{{key}}"
+                               ng-model="classesOfUser" ng-disabled="displayMngr.mode === 'readonly'"> Pronunciation
+                        Tips
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-form>

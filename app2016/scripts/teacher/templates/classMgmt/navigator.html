@@ -1,0 +1,79 @@
+<nav class="vert-nav-wrapper">
+    <!-- search -->
+    <div style="margin-top: 2em;">
+        <input type="text" placeholder="Search" autocomplete="off"
+               autocorrect="off" autocapitalize="off" spellcheck="false" class="search-input"
+               ng-model="model.params.classMgmtParams.filter"
+               ng-keypress="($event.which===13)?enterPressed():return">
+    </div>
+    <div style="border-bottom: 2px solid lightgrey; margin-left: 0em;"></div>
+    <div style="margin-top: 1em; margin-bottom: 1em; margin-left: 0em;">
+        <div class="primary-header"
+             style="color: #f58923; border-left: 5px solid #f58923;">
+            <label ng-click="navigator.goTo('teacherRoot.teachercontent.classMgmt.classRoster')" style="margin-left: 1em;">{{'classMgmt.student.nav.contextTitle' | translate}}</label>
+        </div>
+    </div>
+    <div style="border-bottom: 2px solid lightgrey; margin-left: 0em;"></div>
+    <div class="primary-header" style="color: #7b8b98;">
+        <label>PROFILE</label>
+        <a href="" class="pull-right" ng-show="navigator.mode === 'readonly'"
+           ng-click="navigator.buttons[1].onClick()">
+            <i class="fa fa-edit"></i>
+            <label style="font-size: smaller; margin: auto">{{'classMgmt.student.nav.action' | translate}}</label>
+        </a>
+        <a href="" class="pull-right" ng-hide="navigator.mode === 'readonly'">
+            <label style="font-size: smaller; margin: auto">{{'classMgmt.student.nav.mode' | translate}}</label>
+        </a>
+    </div>
+    <div style="margin-right: 1em;">
+        <select ng-model="navigator.student.personId" class="form-control"
+                ng-disabled="navigator.mode !== 'readonly'"
+                ng-options="student.personId as student.studentName for student in navigator.studentList"
+                ng-change="navigator.onSelectClick(navigator.student.personId)"></select>
+    </div>
+    <div style="font-size: small;">
+        <div class="primary-header">STUDENT PROFILE</div>
+        <ul id="studentProfile">
+            <li class="class-nav-brand">
+                <a href="#tab0" data-toggle="tab">{{'classMgmt.student.nav.tab0' | translate}}</a>
+                <i class="fa fa-xing" style="color:red"
+                   ng-show="navigator.showValidSection('identityForm')"></i>
+            </li>
+            <li class="class-nav-brand">
+                <a href="#tab1" data-toggle="tab">{{'classMgmt.student.nav.tab1' | translate}}</a>
+                <i class="fa fa-xing" style="color:red"
+                   ng-show="navigator.showValidSection('demographicsForm')"></i>
+            </li>
+            <li class="class-nav-brand">
+                <a href="#tab2" data-toggle="tab">{{'classMgmt.student.nav.tab2' | translate}}</a>
+                <i class="fa fa-xing" style="color:red"
+                   ng-show="navigator.showValidSection(['primaryGuardianForm', 'secondaryGuardianForm'])"></i>
+            </li>
+            <li class="class-nav-brand">
+                <a href="#tab3" data-toggle="tab">{{'classMgmt.student.nav.tab3' | translate}}</a>
+                <i class="fa fa-xing" style="color:red"
+                   ng-show="navigator.showValidSection('classesForm')"></i>
+            </li>
+            <li class="class-nav-brand">
+                <a href="#tab4" data-toggle="tab">{{'classMgmt.student.nav.tab4' | translate}}</a>
+                <i class="fa fa-xing" style="color:red"
+                   ng-show="navigator.showValidSection('enrollmentsForm')"></i>
+            </li>
+            <li class="class-nav-brand">
+                <a href="#tab5" data-toggle="tab">{{'classMgmt.student.nav.tab5' | translate}}</a>
+                <i class="fa fa-xing" style="color:red"
+                   ng-show="navigator.showValidSection(['productSettingsForm'])"></i>
+            </li>
+        </ul>
+    </div>
+    <div ng-hide="navigator.mode === 'readonly'">
+        <div class="" style="border-top: 2px solid lightgrey; margin-left: 0em; margin-bottom: 2em;"></div>
+        <div class="container-fluid" ng-show="navigator.buttons && navigator.buttons.length">
+            <!-- Button -->
+            <button class="col-sm-6 btn btn-sm"
+                    ng-repeat="button in navigator.buttons"
+                    ng-click="button.onClick()" ng-class="button.getCssClasses()"><i class="icon-person"></i>{{button.title}}
+            </button>
+        </div>
+    </div>
+</nav>

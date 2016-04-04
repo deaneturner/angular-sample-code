@@ -1,0 +1,501 @@
+<div class="row">
+    <div class="col-sm-4"></div>
+    <h3 class="col-sm-4">Primary Guardian</h3>
+</div>
+<ng-form class="form-horizontal" name="primaryGuardianForm" novalidate autocomplete="off">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label for="listOfHmhGuardian[0].firstName" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].firstName.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[0].firstName')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('primaryGuardianForm', 'firstName')">
+                    <input type="text" class="form-control" id="listOfHmhGuardian[0].firstName" name="firstName"
+                           placeholder="Guardian First Name"
+                           ng-model="resultSet.data.listOfHmhGuardian[0].firstName"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['listOfHmhGuardian[0].firstName'].required"
+                           ng-pattern="formMngr.validations.text1.regex"
+                           ng-maxlength="formMngr.fields['listOfHmhGuardian[0].firstName'].maxlength"
+                           maxlength="{{formMngr.fields['listOfHmhGuardian[0].firstName'].maxlength}}">
+
+                    <div ng-messages="studentForm.primaryGuardianForm.firstName.$error" ng-messages-multiple
+                         role="alert"
+                         ng-if="studentForm.primaryGuardianForm.firstName.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.getMessage('listOfHmhGuardian[0].firstName',
+                            'requiredMsg')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text1.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['listOfHmhGuardian[0].firstName'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listOfHmhGuardian[0].lastName" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].lastName.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[0].lastName')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('primaryGuardianForm', 'lastName')">
+                    <input type="text" class="form-control" id="listOfHmhGuardian[0].lastName" name="lastName"
+                           placeholder="Guardian Last Name"
+                           ng-model="resultSet.data.listOfHmhGuardian[0].lastName"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['listOfHmhGuardian[0].lastName'].required"
+                           ng-pattern="formMngr.validations.text1.regex"
+                           ng-maxlength="formMngr.fields['listOfHmhGuardian[0].lastName'].maxlength"
+                           maxlength="{{formMngr.fields['listOfHmhGuardian[0].lastName'].maxlength}}">
+
+                    <div ng-messages="studentForm.primaryGuardianForm.lastName.$error" ng-messages-multiple role="alert"
+                         ng-if="studentForm.primaryGuardianForm.lastName.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.getMessage('listOfHmhGuardian[0].lastName',
+                            'requiredMsg')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text1.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['listOfHmhGuardian[0].lastName'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listOfHmhGuardian[0].relationship" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].relationship.label'
+                    | translate}}:</label>
+
+                <div class="col-sm-8">
+                    <select class="form-control" id="listOfHmhGuardian[0].relationship" name="relationship"
+                            ng-model="resultSet.data.listOfHmhGuardian[0].relationship"
+                            ng-disabled="displayMngr.mode === 'readonly'">
+                        <option value="">---Please select---</option> <!-- not selected / blank option -->
+                        <option ng-repeat="(key, value) in resultSet.meta['guardian.relationship'].map" value="{{key}}">
+                            {{value}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listOfHmhGuardian[0].phoneNumber" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].phoneNumber.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[0].phoneNumber')}}</label>
+
+                <div class="col-sm-8">
+                    <div class="col-sm-4" ng-class="formMngr.getCssClasses('primaryGuardianForm', 'areaCode')">
+                        <input id="areaCode" name="areaCode" class="form-control" type="text"
+                               class="form-control" size="3" maxlength="3" placeholder="XXX"
+                               ng-readonly="displayMngr.mode === 'readonly'"
+                               ng-model="formMngr.viewModel['listOfHmhGuardian[0].contactInfo.phoneNumberList[0].number'].areaCode"
+                               ng-change="formMngr.viewModel.updatePhoneNumber('listOfHmhGuardian[0].contactInfo.phoneNumberList[0].number')"
+                               ng-pattern="formMngr.validations.digits3.regex"
+                               ng-required="formMngr.viewModel.isRequired('listOfHmhGuardian[0].contactInfo.phoneNumberList[0].number', 'areaCode', ['areaCode', 'exchange', 'number'])">
+                    </div>
+                    <div class="col-sm-4" ng-class="formMngr.getCssClasses('primaryGuardianForm', 'exchange')">
+                        <input id="exchange" name="exchange" class="form-control" type="text"
+                               class="form-control" size="3" maxlength="3" placeholder="XXX"
+                               ng-readonly="displayMngr.mode === 'readonly'"
+                               ng-model="formMngr.viewModel['listOfHmhGuardian[0].contactInfo.phoneNumberList[0].number'].exchange"
+                               ng-change="formMngr.viewModel.updatePhoneNumber('listOfHmhGuardian[0].contactInfo.phoneNumberList[0].number')"
+                               ng-pattern="formMngr.validations.digits3.regex"
+                               ng-required="formMngr.viewModel.isRequired('listOfHmhGuardian[0].contactInfo.phoneNumberList[0].number', 'exchange', ['areaCode', 'exchange', 'number'])">
+                        {{formMngr.fields['listOfHmhGuardian[0].phoneNumber'].required}}
+                    </div>
+                    <div class="col-sm-4" ng-class="formMngr.getCssClasses('primaryGuardianForm', 'number')">
+                        <input id="number" name="number" class="form-control" type="text"
+                               class="form-control" size="4" maxlength="4" placeholder="XXXX"
+                               ng-readonly="displayMngr.mode === 'readonly'"
+                               ng-pattern="formMngr.validations.digits4.regex"
+                               ng-model="formMngr.viewModel['listOfHmhGuardian[0].contactInfo.phoneNumberList[0].number'].number"
+                               ng-change="formMngr.viewModel.updatePhoneNumber('listOfHmhGuardian[0].contactInfo.phoneNumberList[0].number')"
+                               ng-required="formMngr.viewModel.isRequired('listOfHmhGuardian[0].contactInfo.phoneNumberList[0].number', 'number', ['areaCode', 'exchange', 'number'])">
+                    </div>
+
+                    <div ng-class="formMngr.getCssClasses('primaryGuardianForm', ['areaCode', 'exchange', 'number'])">
+                        <div class="col-sm-12"
+                             ng-if="studentForm.primaryGuardianForm.areaCode.$error.required || studentForm.primaryGuardianForm.exchange.$error.required || studentForm.primaryGuardianForm.number.$error.required">
+                            <p class='help-block'>{{formMngr.validations.phoneNumber.message}}</p>
+                        </div>
+                        <div class="col-sm-12" ng-messages="studentForm.primaryGuardianForm.areaCode.$error"
+                             ng-messages-multiple
+                             role="alert"
+                             ng-if="studentForm.primaryGuardianForm.areaCode.$touched || formMngr.ignoreTouched">
+                            <p class='help-block' ng-message="required">
+                                {{formMngr.getMessage('listOfHmhGuardian[0].phoneNumber',
+                                'requiredMsg')}}</p>
+
+                            <p class='help-block' ng-message="pattern">Area code length
+                                {{formMngr.validations.digits3.message}}</p>
+                        </div>
+                        <div class="col-sm-12" ng-messages="studentForm.primaryGuardianForm.exchange.$error"
+                             ng-messages-multiple
+                             role="alert"
+                             ng-if="studentForm.primaryGuardianForm.exchange.$touched || formMngr.ignoreTouched">
+                            <p class='help-block' ng-message="required">
+                                {{formMngr.getMessage('listOfHmhGuardian[0].phoneNumber',
+                                'requiredMsg')}}</p>
+
+                            <p class='help-block' ng-message="pattern">Exchange length
+                                {{formMngr.validations.digits3.message}}</p>
+                        </div>
+                        <div class="col-sm-12" ng-messages="studentForm.primaryGuardianForm.number.$error"
+                             ng-messages-multiple
+                             role="alert"
+                             ng-if="studentForm.primaryGuardianForm.number.$touched || formMngr.ignoreTouched">
+                            <p class='help-block' ng-message="required">
+                                {{formMngr.getMessage('listOfHmhGuardian[0].phoneNumber',
+                                'requiredMsg')}}</p>
+
+                            <p class='help-block' ng-message="pattern">Number length
+                                {{formMngr.validations.digits4.message}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listOfHmhGuardian[0].addressLine1" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].addressLine1.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[0].addressLine1')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('primaryGuardianForm', 'addressLine1')">
+                    <input type="text" class="form-control" id="listOfHmhGuardian[0].addressLine1" name="addressLine1"
+                           placeholder="Guardian Address Line 1"
+                           ng-model="resultSet.data.listOfHmhGuardian[0].contactInfo.physicalAddressList[0].addressLine1"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['listOfHmhGuardian[0].addressLine1'].required"
+                           ng-pattern="formMngr.validations.text1.regex"
+                           ng-maxlength="formMngr.fields['listOfHmhGuardian[0].addressLine1'].maxlength"
+                           maxlength="{{formMngr.fields['listOfHmhGuardian[0].addressLine1'].maxlength}}">
+
+                    <div ng-messages="studentForm.primaryGuardianForm.addressLine1.$error" ng-messages-multiple
+                         role="alert"
+                         ng-if="studentForm.primaryGuardianForm.addressLine1.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.getMessage('listOfHmhGuardian[0].addressLine1',
+                            'requiredMsg')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text1.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['listOfHmhGuardian[0].addressLine1'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listOfHmhGuardian[0].addressLine2" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].addressLine2.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[0].addressLine2')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('primaryGuardianForm', 'addressLine2')">
+                    <input type="text" class="form-control" id="listOfHmhGuardian[0].addressLine2" name="addressLine2"
+                           placeholder="Guardian Address Line 2"
+                           ng-model="resultSet.data.listOfHmhGuardian[0].contactInfo.physicalAddressList[0].addressLine2"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['listOfHmhGuardian[0].addressLine2'].required"
+                           ng-pattern="formMngr.validations.text1.regex"
+                           ng-maxlength="formMngr.fields['listOfHmhGuardian[0].addressLine2'].maxlength"
+                           maxlength="{{formMngr.fields['listOfHmhGuardian[0].addressLine2'].maxlength}}">
+
+                    <div ng-messages="studentForm.primaryGuardianForm.addressLine2.$error" ng-messages-multiple
+                         role="alert"
+                         ng-if="studentForm.primaryGuardianForm.addressLine2.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.getMessage('listOfHmhGuardian[0].addressLine2',
+                            'requiredMsg')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text1.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['listOfHmhGuardian[0].addressLine2'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listOfHmhGuardian[0].addressLine3" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].addressLine3.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[0].addressLine3')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('primaryGuardianForm', 'addressLine3')">
+                    <input type="text" class="form-control" id="listOfHmhGuardian[0].addressLine3" name="addressLine3"
+                           placeholder="Guardian Address Line 3"
+                           ng-model="resultSet.data.listOfHmhGuardian[0].contactInfo.physicalAddressList[0].addressLine3"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['listOfHmhGuardian[0].addressLine3'].required"
+                           ng-pattern="formMngr.validations.text1.regex"
+                           ng-maxlength="formMngr.fields['listOfHmhGuardian[0].addressLine3'].maxlength"
+                           maxlength="{{formMngr.fields['listOfHmhGuardian[0].addressLine3'].maxlength}}">
+
+                    <div ng-messages="studentForm.primaryGuardianForm.addressLine3.$error" ng-messages-multiple
+                         role="alert"
+                         ng-if="studentForm.primaryGuardianForm.addressLine3.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.getMessage('listOfHmhGuardian[0].addressLine3',
+                            'requiredMsg')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text1.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['listOfHmhGuardian[0].addressLine3'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label for="listOfHmhGuardian[0].city" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].city.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[0].city')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('primaryGuardianForm', 'city')">
+                    <input type="text" class="form-control" id="listOfHmhGuardian[0].city" name="city"
+                           placeholder="City"
+                           ng-model="resultSet.data.listOfHmhGuardian[0].contactInfo.physicalAddressList[0].city"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['listOfHmhGuardian[0].city'].required"
+                           ng-pattern="formMngr.validations.text1.regex"
+                           ng-maxlength="formMngr.fields['listOfHmhGuardian[0].city'].maxlength"
+                           maxlength="{{formMngr.fields['listOfHmhGuardian[0].city'].maxlength}}">
+
+                    <div ng-messages="studentForm.primaryGuardianForm.city.$error" ng-messages-multiple role="alert"
+                         ng-if="studentForm.primaryGuardianForm.city.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">{{formMngr.getMessage('listOfHmhGuardian[0].city',
+                            'requiredMsg')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text1.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['listOfHmhGuardian[0].city'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listOfHmhGuardian[0].stateProvince" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].stateProvince.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[0].stateProvince')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('primaryGuardianForm', 'stateProvince')">
+                    <input type="text" class="form-control" id="listOfHmhGuardian[0].stateProvince" name="stateProvince"
+                           placeholder="State"
+                           ng-model="resultSet.data.listOfHmhGuardian[0].contactInfo.physicalAddressList[0].stateProvince"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['listOfHmhGuardian[0].stateProvince'].required"
+                           ng-pattern="formMngr.validations.text1.regex"
+                           ng-maxlength="formMngr.fields['listOfHmhGuardian[0].stateProvince'].maxlength"
+                           maxlength="{{formMngr.fields['listOfHmhGuardian[0].stateProvince'].maxlength}}">
+
+                    <div ng-messages="studentForm.primaryGuardianForm.stateProvince.$error" ng-messages-multiple
+                         role="alert"
+                         ng-if="studentForm.primaryGuardianForm.stateProvince.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.getMessage('listOfHmhGuardian[0].stateProvince',
+                            'requiredMsg')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text1.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['listOfHmhGuardian[0].stateProvince'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listOfHmhGuardian[0].postalCode" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].postalCode.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[0].postalCode')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('primaryGuardianForm', 'postalCode')">
+                    <input type="text" class="form-control" id="listOfHmhGuardian[0].postalCode" name="postalCode"
+                           placeholder="Postal Code"
+                           ng-model="resultSet.data.listOfHmhGuardian[0].contactInfo.physicalAddressList[0].postalCode"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['listOfHmhGuardian[0].postalCode'].required"
+                           ng-maxlength="formMngr.fields['listOfHmhGuardian[0].postalCode'].maxlength"
+                           maxlength="{{formMngr.fields['listOfHmhGuardian[0].postalCode'].maxlength}}"
+                           ng-pattern="formMngr.validations.digitsMin0Max10.regex">
+
+                    <div ng-messages="studentForm.primaryGuardianForm.postalCode.$error" ng-messages-multiple
+                         role="alert"
+                         ng-if="studentForm.primaryGuardianForm.postalCode.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.getMessage('listOfHmhGuardian[0].postalCode',
+                            'requiredMsg')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.digitsMin0Max10.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['listOfHmhGuardian[0].postalCode'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listOfHmhGuardian[0].email" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].email.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[0].email')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('primaryGuardianForm', 'email')">
+                    <input type="email" class="form-control" id="listOfHmhGuardian[0].email" name="email"
+                           placeholder="Email"
+                           ng-model="resultSet.data.listOfHmhGuardian[0].contactInfo.emailAddressList[0].address"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['listOfHmhGuardian[0].email'].required">
+
+                    <div ng-messages="studentForm.primaryGuardianForm.email.$error" ng-messages-multiple role="alert"
+                         ng-if="studentForm.primaryGuardianForm.email.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">{{formMngr.getMessage('listOfHmhGuardian[0].email',
+                            'requiredMsg')}}</p>
+
+                        <p class='help-block' ng-message="email">{{formMngr.validations.email.message}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-form>
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <h3 class="col-sm-4">Secondary Guardian</h3>
+</div>
+<ng-form class="form-horizontal" name="secondaryGuardianForm">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label for="listOfHmhGuardian[1].firstName" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].firstName.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[1].firstName')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('secondaryGuardianForm', 'firstName')">
+                    <input type="text" class="form-control" id="listOfHmhGuardian[1].firstName" name="firstName"
+                           placeholder="Guardian First Name"
+                           ng-model="resultSet.data.listOfHmhGuardian[1].firstName"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['listOfHmhGuardian[1].firstName'].required"
+                           ng-pattern="formMngr.validations.text1.regex"
+                           ng-maxlength="formMngr.fields['listOfHmhGuardian[1].firstName'].maxlength"
+                           maxlength="{{formMngr.fields['listOfHmhGuardian[1].firstName'].maxlength}}">
+
+                    <div ng-messages="studentForm.secondaryGuardianForm.firstName.$error" ng-messages-multiple
+                         role="alert"
+                         ng-if="studentForm.secondaryGuardianForm.firstName.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.getMessage('listOfHmhGuardian[1].firstName',
+                            'requiredMsg')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text1.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['listOfHmhGuardian[1].firstName'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listOfHmhGuardian[1].lastName" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].lastName.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[1].lastName')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('secondaryGuardianForm', 'lastName')">
+                    <input type="text" class="form-control" id="listOfHmhGuardian[1].lastName" name="lastName"
+                           placeholder="Guardian Last Name"
+                           ng-model="resultSet.data.listOfHmhGuardian[1].lastName"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['listOfHmhGuardian[1].lastName'].required"
+                           ng-pattern="formMngr.validations.text1.regex"
+                           ng-maxlength="formMngr.fields['listOfHmhGuardian[1].lastNaem'].maxlength"
+                           maxlength="{{formMngr.fields['listOfHmhGuardian[1].lastNaem'].maxlength}}">
+
+                    <div ng-messages="studentForm.secondaryGuardianForm.lastName.$error" ng-messages-multiple
+                         role="alert"
+                         ng-if="studentForm.secondaryGuardianForm.lastName.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.getMessage('listOfHmhGuardian[1].lastName',
+                            'requiredMsg')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text1.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['listOfHmhGuardian[1].lastName'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listOfHmhGuardian[1].relationship" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].relationship.label'
+                    | translate}}:</label>
+
+                <div class="col-sm-8">
+                    <select class="form-control" id="listOfHmhGuardian[1].relationship" name="relationship"
+                            ng-model="resultSet.data.listOfHmhGuardian[1].relationship"
+                            ng-disabled="displayMngr.mode === 'readonly'">
+                        <option value="">---Please select---</option> <!-- not selected / blank option -->
+                        <option ng-repeat="(key, value) in resultSet.meta['guardian.relationship'].map"
+                                value="{{key}}">
+                            {{value}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="listOfHmhGuardian[1].phoneNumber" class="col-sm-4 control-label">{{'classMgmt.student.fields.listOfHmhGuardian[0].phoneNumber.label'
+                    | translate}}{{formMngr.labelDecorate('listOfHmhGuardian[1].phoneNumber')}}</label>
+
+                <div class="col-sm-8">
+                    <div class="col-sm-4" ng-class="formMngr.getCssClasses('secondaryGuardianForm', 'areaCode')">
+                        <input id="areaCode" name="areaCode" class="form-control" type="text"
+                               class="form-control" size="3" maxlength="3" placeholder="XXX"
+                               ng-readonly="displayMngr.mode === 'readonly'"
+                               ng-model="formMngr.viewModel['listOfHmhGuardian[1].contactInfo.phoneNumberList[0].number'].areaCode"
+                               ng-change="formMngr.viewModel.updatePhoneNumber('listOfHmhGuardian[1].contactInfo.phoneNumberList[0].number')"
+                               ng-pattern="formMngr.validations.digits3.regex"
+                               ng-required="formMngr.viewModel.isRequired('listOfHmhGuardian[1].contactInfo.phoneNumberList[0].number', 'areaCode', ['areaCode', 'exchange', 'number'])">
+                    </div>
+                    <div class="col-sm-4" ng-class="formMngr.getCssClasses('secondaryGuardianForm', 'exchange')">
+                        <input id="exchange" name="exchange" class="form-control" type="text"
+                               class="form-control" size="3" maxlength="3" placeholder="XXX"
+                               ng-readonly="displayMngr.mode === 'readonly'"
+                               ng-model="formMngr.viewModel['listOfHmhGuardian[1].contactInfo.phoneNumberList[0].number'].exchange"
+                               ng-change="formMngr.viewModel.updatePhoneNumber('listOfHmhGuardian[1].contactInfo.phoneNumberList[0].number')"
+                               ng-pattern="formMngr.validations.digits3.regex"
+                               ng-required="formMngr.viewModel.isRequired('listOfHmhGuardian[1].contactInfo.phoneNumberList[0].number', 'exchange', ['areaCode', 'exchange', 'number'])">
+                        {{formMngr.fields['listOfHmhGuardian[1].phoneNumber'].required}}
+                    </div>
+                    <div class="col-sm-4" ng-class="formMngr.getCssClasses('secondaryGuardianForm', 'number')">
+                        <input id="number" name="number" class="form-control" type="text"
+                               class="form-control" size="4" maxlength="4" placeholder="XXXX"
+                               ng-readonly="displayMngr.mode === 'readonly'"
+                               ng-pattern="formMngr.validations.digits4.regex"
+                               ng-model="formMngr.viewModel['listOfHmhGuardian[1].contactInfo.phoneNumberList[0].number'].number"
+                               ng-change="formMngr.viewModel.updatePhoneNumber('listOfHmhGuardian[1].contactInfo.phoneNumberList[0].number')"
+                               ng-required="formMngr.viewModel.isRequired('listOfHmhGuardian[1].contactInfo.phoneNumberList[0].number', 'number', ['areaCode', 'exchange', 'number'])">
+                    </div>
+
+                    <div ng-class="formMngr.getCssClasses('secondaryGuardianForm', ['areaCode', 'exchange', 'number'])">
+                        <div class="col-sm-12"
+                             ng-if="studentForm.secondaryGuardianForm.areaCode.$error.required || studentForm.secondaryGuardianForm.exchange.$error.required || studentForm.secondaryGuardianForm.number.$error.required">
+                            <p class='help-block'>{{formMngr.validations.phoneNumber.message}}</p>
+                        </div>
+                        <div class="col-sm-12" ng-messages="studentForm.secondaryGuardianForm.areaCode.$error"
+                             ng-messages-multiple
+                             role="alert"
+                             ng-if="studentForm.secondaryGuardianForm.areaCode.$touched || formMngr.ignoreTouched">
+                            <p class='help-block' ng-message="required">
+                                {{formMngr.getMessage('listOfHmhGuardian[1].phoneNumber',
+                                'requiredMsg')}}</p>
+
+                            <p class='help-block' ng-message="pattern">Area code length
+                                {{formMngr.validations.digits3.message}}</p>
+                        </div>
+                        <div class="col-sm-12" ng-messages="studentForm.secondaryGuardianForm.exchange.$error"
+                             ng-messages-multiple
+                             role="alert"
+                             ng-if="studentForm.secondaryGuardianForm.exchange.$touched || formMngr.ignoreTouched">
+                            <p class='help-block' ng-message="required">
+                                {{formMngr.getMessage('listOfHmhGuardian[1].phoneNumber',
+                                'requiredMsg')}}</p>
+
+                            <p class='help-block' ng-message="pattern">Exchange length
+                                {{formMngr.validations.digits3.message}}</p>
+                        </div>
+                        <div class="col-sm-12" ng-messages="studentForm.secondaryGuardianForm.number.$error"
+                             ng-messages-multiple
+                             role="alert"
+                             ng-if="studentForm.secondaryGuardianForm.number.$touched || formMngr.ignoreTouched">
+                            <p class='help-block' ng-message="required">
+                                {{formMngr.getMessage('listOfHmhGuardian[1].phoneNumber',
+                                'requiredMsg')}}</p>
+
+                            <p class='help-block' ng-message="pattern">Number length
+                                {{formMngr.validations.digits4.message}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-form>

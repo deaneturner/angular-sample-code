@@ -1,0 +1,13 @@
+<ng-form class="form-horizontal" name="classesForm" autocomplete="off">
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div ng-repeat="(key, value) in resultSet.meta.classesOfUser.map">
+                <div class="clearfix" ng-if="$index % 2 == 0"></div>
+                <label class="col-sm-6 checkbox-inline">
+                    <input type="checkbox" id="classesOfUser" name="classesOfUser" value="{{key}}"
+                           ng-model="classesOfUser" ng-disabled="displayMngr.mode === 'readonly'"> {{value}}
+                </label>
+            </div>
+        </div>
+    </div>
+</ng-form>

@@ -1,0 +1,310 @@
+<ng-form class="form-horizontal" name="identityForm" novalidate autocomplete="off">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label for="systemId" class="col-sm-4 control-label">{{'classMgmt.student.fields.sisId.label' |
+                    translate}}{{formMngr.labelDecorate('sisId')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('identityForm', 'sisId')">
+                    <input type="text" class="form-control" id="sisId" name="sisId"
+                           placeholder="Student ID"
+                           ng-model="resultSet.data.sisId" ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['sisId'].required"
+                           ng-pattern="formMngr.validations.text1.regex"
+                           ng-minlength="1"
+                           ng-maxlength="formMngr.fields.sisId.maxlength"
+                           maxlength="{{formMngr.fields.sisId.maxlength}}">
+
+                    <div ng-messages="studentForm.identityForm.sisId.$error" ng-messages-multiple role="alert"
+                         ng-if="studentForm.identityForm.sisId.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.validations.required.message('classMgmt.student.fields.sisId.label')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text1.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields.sisId.maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="person.firstName" class="col-sm-4 control-label">{{'classMgmt.student.fields.person.firstName.label'
+                    | translate}}{{formMngr.labelDecorate('person.firstName')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('identityForm', 'firstName')">
+                    <input type="text" class="form-control" id="person.firstName" name="firstName"
+                           placeholder="First Name"
+                           ng-model="resultSet.data.person.firstName" ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['person.firstName'].required"
+                           ng-pattern="formMngr.validations.text1.regex"
+                           ng-minlength="1"
+                           ng-maxlength="formMngr.fields['person.firstName'].maxlength"
+                           maxlength="{{formMngr.fields['person.firstName'].maxlength}}">
+
+                    <div ng-messages="studentForm.identityForm.firstName.$error" ng-messages-multiple role="alert"
+                         ng-if="studentForm.identityForm.firstName.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.validations.required.message('classMgmt.student.fields.person.firstName.label')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text1.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['person.firstName'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="person.middleName" class="col-sm-4 control-label">{{'classMgmt.student.fields.person.middleName.label'
+                    | translate}}{{formMngr.labelDecorate('person.middleName')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('identityForm', 'middleName')">
+                    <input type="text" class="form-control" id="person.middleName" name="middleName"
+                           placeholder="Middle Name"
+                           ng-model="resultSet.data.person.middleName" ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['person.middleName'].required"
+                           ng-pattern="formMngr.validations.text2.regex"
+                           ng-maxlength="formMngr.fields['person.middleName'].maxlength"
+                           maxlength="{{formMngr.fields['person.middleName'].maxlength}}">
+
+                    <div ng-messages="studentForm.identityForm.middleName.$error" ng-messages-multiple role="alert"
+                         ng-if="studentForm.identityForm.middleName.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.validations.required.message('classMgmt.student.fields.person.middleName.label')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text2.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['person.middleName'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="person.lastName" class="col-sm-4 control-label">{{'classMgmt.student.fields.person.lastName.label'
+                    | translate}}{{formMngr.labelDecorate('person.lastName')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('identityForm', 'lastName')">
+                    <input type="text" class="form-control" id="person.lastName" name="lastName"
+                           placeholder="Last Name"
+                           ng-model="resultSet.data.person.lastName" ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['person.lastName'].required"
+                           ng-pattern="formMngr.validations.text2.regex"
+                           ng-minlength="1"
+                           ng-maxlength="formMngr.fields['person.lastName'].maxlength"
+                           maxlength="{{formMngr.fields['person.lastName'].maxlength}}">
+
+                    <div ng-messages="studentForm.identityForm.lastName.$error" ng-messages-multiple role="alert"
+                         ng-if="studentForm.identityForm.lastName.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.validations.required.message('classMgmt.student.fields.person.lastName.label')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text2.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['person.lastName'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="person.suffix"
+                       class="col-sm-4 control-label">{{'classMgmt.student.fields.person.suffix.label' |
+                    translate}}{{formMngr.labelDecorate('person.suffix')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('identityForm', 'suffix')">
+                    <input type="text" class="form-control" id="person.suffix" name="suffix"
+                           placeholder="Suffix"
+                           ng-model="resultSet.data.person.suffix" ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['person.suffix'].required"
+                           ng-minlength="1"
+                           ng-maxlength="formMngr.fields['person.suffix'].maxlength"
+                           maxlength="{{formMngr.fields['person.suffix'].maxlength}}">
+
+                    <div ng-messages="studentForm.identityForm.suffix.$error" ng-messages-multiple role="alert"
+                         ng-if="studentForm.identityForm.suffix.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.validations.required.message('classMgmt.student.fields.person.suffix.label')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text2.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['person.suffix'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="person.preferredName" class="col-sm-4 control-label">{{'classMgmt.student.fields.person.preferredName.label'
+                    | translate}}{{formMngr.labelDecorate('person.preferredName')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('identityForm', 'preferredName')">
+                    <input type="text" class="form-control" id="person.preferredName" name="preferredName"
+                           placeholder="Preferred Name" ng-model="resultSet.data.person.preferredName"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['person.preferredName'].required"
+                           ng-pattern="formMngr.validations.text1.regex" ng-minlength="1"
+                           ng-maxlength="formMngr.fields['person.preferredName'].maxlength"
+                           maxlength="{{formMngr.fields['person.preferredName'].maxlength}}">
+
+                    <div ng-messages="studentForm.identityForm.preferredName.$error" ng-messages-multiple
+                         role="alert"
+                         ng-if="studentForm.identityForm.preferredName.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.validations.required.message('classMgmt.student.fields.person.preferredName.label')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text1.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['person.preferredName'].maxlength)}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label for="person.userName" class="col-sm-4 control-label">{{'classMgmt.student.fields.person.userName.label'
+                    | translate}}{{formMngr.labelDecorate('person.userName')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('identityForm', 'userName')">
+                    <input style="display:none;" type="text" name="autocompletebuster"/>
+                    <input type="text" class="form-control" id="person.userName" name="userName"
+                           placeholder="User Name"
+                           ng-model="resultSet.data.person.username" ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['person.userName'].required"
+                           ng-pattern="formMngr.validations.text2.regex"
+                           ng-minlength="1"
+                           ng-maxlength="formMngr.fields['person.userName'].maxlength"
+                           maxlength="{{formMngr.fields['person.userName'].maxlength}}"
+                           autocomplete="off">
+
+                    <div ng-messages="studentForm.identityForm.userName.$error" ng-messages-multiple role="alert"
+                         ng-if="studentForm.identityForm.userName.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.validations.required.message('classMgmt.student.fields.person.userName.label')}}</p>
+
+                        <p class='help-block' ng-message="pattern">{{formMngr.validations.text2.message}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['person.userName'].maxlength)}}</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="person.password" class="col-sm-4 control-label">{{'classMgmt.student.fields.person.password.label'
+                    | translate}}{{formMngr.labelDecorate('person.password')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('identityForm', 'password')">
+                    <input style="display:none;" type="password" name="autocompletebuster"/>
+                    <input type="password" class="form-control" id="person.password" name="password"
+                           placeholder="Password"
+                           ng-model="resultSet.data.person.password" ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="formMngr.fields['person.password'].required"
+                           ng-minlength="6"
+                           ng-maxlength="formMngr.fields['person.password'].maxlength"
+                           password
+                           firstname="resultSet.data.person.firstName"
+                           lastname="resultSet.data.person.lastName"
+                           autocomplete="off">
+
+                    <div ng-messages="studentForm.identityForm.password.$error" ng-messages-multiple role="alert"
+                         ng-if="studentForm.identityForm.password.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.validations.required.message('classMgmt.student.fields.person.password.label')}}</p>
+
+                        <p class='help-block' ng-message="minlength">
+                            {{formMngr.validations.minlength.message(formMngr.fields['person.passwordConfirm'].minlength)}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['person.password'].maxlength)}}</p>
+
+                        <p class='help-block' ng-message="password">
+                            {{formMngr.validations.password.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group"
+                 ng-if="(displayMngr.mode !== 'readonly') && studentForm.identityForm.password.$dirty">
+                <label for="person.passwordConfirm" class="col-sm-4 control-label">{{'classMgmt.student.fields.person.passwordConfirm.label'
+                    | translate}}{{formMngr.labelDecorate('person.passwordConfirm')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('identityForm', 'passwordConfirm', true)">
+                    <input type="password" class="form-control" id="person.passwordConfirm" name="passwordConfirm"
+                           placeholder="Confirm Password"
+                           ng-model="formMngr.fields.passwordConfirm.value"
+                           ng-readonly="displayMngr.mode === 'readonly'"
+                           ng-required="studentForm.identityForm.password.$dirty"
+                           ng-minlength="6"
+                           ng-maxlength="formMngr.fields['person.password'].maxlength"
+                           password-confirm="studentForm.identityForm.password.$viewValue">
+
+                    <div ng-messages="studentForm.identityForm.passwordConfirm.$error" ng-messages-multiple
+                         role="alert">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.validations.required.message('classMgmt.student.fields.person.passwordConfirm.label')}}</p>
+
+                        <p class='help-block' ng-message="minlength">
+                            {{formMngr.validations.minlength.message(formMngr.fields['person.passwordConfirm'].minlength)}}</p>
+
+                        <p class='help-block' ng-message="maxlength">
+                            {{formMngr.validations.maxlength.message(formMngr.fields['person.passwordConfirm'].maxlength)}}</p>
+
+                        <p class='help-block' ng-message="passwordConfirm">
+                            {{formMngr.validations.password.confirmMsg}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="person.dob" class="col-sm-4 control-label">{{'classMgmt.student.fields.person.dob.label'
+                    | translate}}{{formMngr.labelDecorate('person.dob')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('identityForm', 'dob')">
+                    <p class="input-group">
+                        <input id="person.dob" name="dob" type="text" class="form-control"
+                               uib-datepicker-popup="{{formMngr.fields['person.dob'].format}}"
+                               is-open="formMngr.fields['person.dob'].opened"
+                               max-date="formMngr.fields['person.dob'].maxDate"
+                               datepicker-options="formMngr.fields['person.dob'].dateOptions" close-text="Close"
+                               alt-input-formats="altInputFormats" ng-readonly="displayMngr.mode === 'readonly'"
+                               ng-model="resultSet.data.person.dob"
+                               placeholder="mm/dd/yyyy"
+                               data-toggle="tooltip" data-placement="bottom"
+                               title="{{'classMgmt.student.fields.person.dob.tooltip' | translate}}">
+                        <!--<span class="input-group-btn">-->
+                        <!--<button type="button" class="btn btn-default"-->
+                        <!--ng-click="formMngr.fields['person.dob'].onClick()"-->
+                        <!--ng-disabled="displayMngr.mode === 'readonly'"><i-->
+                        <!--class="glyphicon glyphicon-calendar"></i></button>-->
+                        <!--</span>-->
+                    </p>
+
+                    <div ng-messages="studentForm.identityForm.dob.$error" ng-messages-multiple role="alert">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.validations.required.message('classMgmt.student.fields.person.dob.label')}}</p>
+
+                        <p class='help-block' ng-message="date">{{formMngr.validations.date.message}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="grade" class="col-sm-4 control-label">{{'classMgmt.student.fields.grade.label' |
+                    translate}}{{formMngr.labelDecorate('grade')}}</label>
+
+                <div class="col-sm-8" ng-class="formMngr.getCssClasses('identityForm', 'grade')">
+                    <select class="form-control" id="grade" name="grade"
+                            ng-model="resultSet.data.grade" ng-disabled="displayMngr.mode === 'readonly'"
+                            ng-required="formMngr.fields['grade'].required">
+                        <option value="">---Please select---</option> <!-- not selected / blank option -->
+                        <option ng-repeat="grade in resultSet.meta['grade'].list" value="{{grade}}">
+                            {{grade}}
+                        </option>
+                    </select>
+
+                    <div ng-messages="studentForm.identityForm.grade.$error" ng-messages-multiple role="alert"
+                         ng-if="studentForm.identityForm.grade.$touched || formMngr.ignoreTouched">
+                        <p class='help-block' ng-message="required">
+                            {{formMngr.validations.required.message('classMgmt.student.fields.grade.label')}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-form>

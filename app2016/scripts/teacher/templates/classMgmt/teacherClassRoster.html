@@ -1,0 +1,84 @@
+<div class="classMgmt-searchBar">
+    <div class="col-sm-12 col-xs-12">
+        <!-- Search -->
+        <!--<div ng-controller="SearchCtrl" class="search-wrapper ">-->
+        <div class="classMgmt-searchWrapper">
+            <input type="text" placeholder="Search all Students" class="classMgmt-searchInput"
+                   ng-click="changeFocus()"/>
+            <button type="submit" class="search-submit"><i class="icon-search"></i></button>
+        </div>
+    </div>
+</div>
+<div class="classMgmt-titleWrapper">
+    <div class="classMgmt-titleBar">
+        <div class="col-sm-6 col-xs-6">
+            <!-- Class -->
+            <span class="heading--primary">{{model.title}}</span>
+        </div>
+        <div class="col-sm-6 col-xs-6 text-right">
+            <!-- Add Student Button -->
+            <button class="button btn-lg primary-button-orange"
+                    ng-repeat="button in displayMngr.contentBar.buttons"
+                    ng-click="button.onClick()"><i class="icon-person" style="margin-right: 10px"></i>{{button.title}}
+            </button>
+        </div>
+    </div>
+</div>
+<div class="classMgmt-filterBar">
+    <!-- Active | Inactive -->
+    <div class="col-sm-9 col-xs-9">
+        <div filtered-toggle class="filtered-toggle">
+            <a href="" class="filtered-toggle-link filtered-toggle--is-active"><span>Active</span>
+                ()</a> |
+            <a href="" class="filtered-toggle-link"><span>Inactive</span> ()</a>
+        </div>
+    </div>
+    <div class="col-sm-3 col-xs-3">
+        <div class="">
+            <div class="col-sm-6 col-xs-6">
+                <div class="dropdown text-right">
+                    <!-- Filter By -->
+                    <button ng-disabled="displayMngr.filterBy.isDisabled"
+                            class="btn btn-default dropdown-toggle" type="button" id="filterBy"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Filter By
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><input type="checkbox">All (?)</li>
+                        <li><input type="checkbox">Preschool (?)</li>
+                        <li><input type="checkbox">Elementary (?)</li>
+                        <!--<li role="separator" class="divider"></li>-->
+                        <!--<li><a href="#">Separated link</a></li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <div class="dropdown text-right">
+                    <!-- Bulk Action -->
+                    <button ng-disabled="displayMngr.bulkAction.isDisabled"
+                            class="btn btn-default dropdown-toggle"
+                            type="button"
+                            id="bulkAction"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Bulk Action
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Edit</a></li>
+                        <li><a href="#">Enroll</a></li>
+                        <li><a href="#">Remove</a></li>
+                        <!--<li role="separator" class="divider"></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="classMgmt-table" ng-if="model.teacherRosterInit">
+    <table-data-driven-layout table-def="tableDef"
+                              result-set="resultSet"
+                              handlers="handlers"
+                              template-url="scripts/directives/templates/table.html">
+    </table-data-driven-layout>
+</div>

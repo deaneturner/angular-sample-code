@@ -1,0 +1,61 @@
+<ng-form class="form-horizontal" name="demographicsForm" novalidate autocomplete="off">
+    <div class="form-group">
+        <div class="col-sm-2">
+            <label for="ayp" class="control-label text-left">{{'classMgmt.student.fields.demographics.ayp.label' | translate}}:</label>
+        </div>
+
+
+        <div class="col-sm-10">
+            <div ng-repeat="(key, value) in resultSet.meta.ayp.map">
+                <div class="clearfix" ng-if="$index % 2 == 0"></div>
+                <label class="col-sm-5 checkbox-inline">
+                    <input type="checkbox" ng-attr-multiple="{{formMngr.fields['demographics.ayp'].multiValue}}"
+                           id="ayp" name="ayp"
+                           value="{{key}}"
+                           ng-model="formMngr.viewModel['demographics.ayp'][key]"
+                           ng-change="formMngr.viewModel.updateCheckboxValue('demographics.ayp', resultSet.data)"
+                           ng-disabled="displayMngr.mode === 'readonly'"> {{value}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-2">
+            <label for="ethnicity" class="control-label text-left">{{'classMgmt.student.fields.demographics.ethnicity.label' | translate}}:</label>
+        </div>
+
+        <div class="col-sm-10">
+            <div ng-repeat="(key, value) in resultSet.meta.ethnicity.map">
+                <div class="clearfix" ng-if="$index % 2 == 0"></div>
+                <label class="col-sm-5 checkbox-inline">
+                    <input type="checkbox"
+                           ng-attr-multiple="{{formMngr.fields['demographics.ethnicity'].multiValue}}"
+                           id="ethnicity" name="ethnicity" value="{{key}}"
+                           ng-model="formMngr.viewModel['demographics.ethnicity'][key]"
+                           ng-change="formMngr.viewModel.updateCheckboxValue('demographics.ethnicity', resultSet.data)"
+                           ng-disabled="displayMngr.mode === 'readonly'">
+                    {{value}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-2">
+            <label for="gender" class="control-label text-left">{{'classMgmt.student.fields.demographics.gender.label' | translate}}:</label>
+        </div>
+
+        <div class="col-sm-10">
+            <div ng-repeat="(key, value) in resultSet.meta.gender.map">
+                <div class="clearfix" ng-if="$index % 2 == 0"></div>
+                <label class="col-sm-5 checkbox-inline">
+                    <input type="checkbox" ng-attr-multiple="{{formMngr.fields['demographics.gender'].multiValue}}"
+                           id="gender" name="gender" value="{{key}}"
+                           ng-change="formMngr.viewModel.updateCheckboxValue('demographics.gender', resultSet.data, key)"
+                           ng-model="formMngr.viewModel['demographics.gender'][key]"
+                           ng-disabled="displayMngr.mode === 'readonly'"> {{value}}
+
+                </label>
+            </div>
+        </div>
+    </div>
+</ng-form>

@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div ng-show="messageMngr && messageMngr.messages.length && studentForm.$invalid"
+         ng-class="messageMngr.getCssClasses()" role="alert">
+        <div ng-repeat="message in messageMngr.messages">{{message}}</div>
+    </div>
+    <div class="row" ng-show="displayMngr.contentBar.navButton || displayMngr.contentBar.search">
+        <div class="col-xs-12 resources-search">
+            <!-- Search -->
+            <!--<div ng-controller="SearchCtrl" class="search-wrapper ">-->
+            <button type="submit" ng-show="displayMngr.contentBar.navButton"
+                    ng-click="displayMngr.contentBar.navButton.onClick()" class="">
+                {{displayMngr.contentBar.navButton.title}}
+            </button>
+            <div ng-show="displayMngr.contentBar.search" class="search-wrapper ">
+                <input search-input type="text" placeholder="{{ displayMngr.contentBar.search.placeholder }}"
+                       class="search-input "
+                       ng-click="displayMngr.contentBar.search.onClick()"/>
+                <button type="submit" class="search-submit"><i class="icon-search"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <a ng-if="displayMngr.contentBar.title" href="" class="heading--primary"
+               ng-click="displayMngr.contentBar.title.onClick()">{{displayMngr.contentBar.title}}</a>
+
+            <div class="">{{navigator.tabs[navigator.tabs.current].title}}</div>
+            <div ng-repeat="breadcrumb in displayMngr.contentBar.breadcrumbs.config" style="display:inline;">
+                <a ng-if="breadcrumb.onClick" href="" class="" ng-click="breadcrumb.onClick()">{{breadcrumb.title}}</a>
+                <span ng-if="!breadcrumb.onClick" href="" class="" ng-click="breadcrumb.onClick()">{{breadcrumb.title}}</span>
+                <!--<span ng-if="!$last" class="heading&#45;&#45;primary">{{displayMngr.contentBar.breadcrumbs.separator}}</span>-->
+                <div ng-if="!$last"></div>
+            </div>
+        </div>
+        <div class="col-xs-6 text-right"
+             ng-show="displayMngr.contentBar.buttons && displayMngr.contentBar.buttons.length">
+            <!-- Button -->
+            <button class="pull-right primary-button-orange primary-icon"
+                    ng-repeat="button in displayMngr.contentBar.buttons"
+                    ng-click="button.onClick()" ng-disabled="button.disabled" ng-class="button.getCssClasses()"><i
+                    class="icon-person"></i>{{button.title}}
+            </button>
+        </div>
+    </div>
+    <div class="col-sm-12 pull-left classMgmt-separator">
+        * Required Field
+    </div>
+</div>
+

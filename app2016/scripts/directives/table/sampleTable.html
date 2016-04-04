@@ -1,0 +1,73 @@
+<div class="data-table">
+    <table class="data-table--table">
+        <thead>
+        <tr class="sort-row">
+            <th class="column--is-selected active-sort top-left-radiused" ng-repeat="column in columns"
+                ng-class="selectedClass(column.fieldName)">
+                {{column.title}}<i ng-if="column.sortable" ng-click="column.sortable && changeSorting(column.fieldName)" class="fa fa-sort"></i>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-if="resultSet.remote" ng-repeat="object in resultSet.data">
+        <tr ng-if="!resultSet.remote" ng-repeat="object in resultSet.data | orderBy:resultSet.sortBy:resultSet.sortDescending | range:resultSet.start | limitTo:resultSet.pageSize">
+            <td ng-click="handlers.onCellClick(object[tableDef.selectKey], columns[$index].fieldName, object[columns[$index].fieldName])"
+                ng-repeat="(key, value) in object"
+                ng-if="key != '$$hashKey' && (tableDef.fieldNames.indexOf(columns[$index].fieldName) !== -1)">
+                {{object[columns[$index].fieldName] | column : getColumnFilter(columns[$index].fieldName)}}
+            </td>
+        </tr>
+        <tr ng-show="resultSet.total == 0">
+            <td colspan="{{columns.length}}">{{tableDef.msgEmptyResultset}}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr ng-show="resultSet.numberOfPages > 1">
+            <td colspan="{{columns.length}}">
+                <!--page nav-->
+                <div style="float: left">
+                    <button class="btn btn-primary"
+                            ng-click="handlers.changePage(resultSet.currentPage - 1)"
+                            ng-disabled="resultSet.currentPage == 0">
+                        Previous
+                    </button>
+                    {{resultSet.currentPage + 1}} / {{resultSet.numberOfPages}}
+                    <button class="btn btn-primary"
+                            ng-click="handlers.changePage(resultSet.currentPage + 1)"
+                            ng-disabled="resultSet.currentPage == resultSet.numberOfPages - 1">
+                        Next
+                    </button>
+                </div>
+                <!--jump to-->
+                <div class="form-group input-group" style="padding-left: 15px; margin-bottom:0px">
+                    <div class="input-group-addon">Jump to:</div>
+                    <select class="form-control"
+                            style="max-width: 70px"
+                            ng-model="resultSet.currentPage"
+                            ng-change="handlers.changePage(resultSet.currentPage)"
+                            ng-options="n+1 for n in [] | range:0:resultSet.numberOfPages">
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr ng-show="resultSet.total > 0">
+            <!--pagination-->
+            <td colspan="{{columns.length}}" style="border-top: none; padding: 0 10px">
+                <ul class="pagination pagination-sm" style="margin: 2px 0">
+                    <li style="float: left; padding: 6px 12px 6px 0; color: #333333;">Results per page:</li>
+                    <li ng-repeat="size in resultSet.pageSizes" ng-if="size < resultSet.total"
+                        ng-class="{active: resultSet.pageSize == size}">
+                        <a ng-click="handlers.changePageSize(size)"
+                           ng-bind="size"></a>
+                    </li>
+                    <li ng-class="{active: resultSet.pageSize >= resultSet.total}">
+                        <a ng-click="handlers.changePageSize(resultSet.total)">
+                            All ({{resultSet.total}})
+                        </a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

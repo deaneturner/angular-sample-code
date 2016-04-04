@@ -1,0 +1,14 @@
+<ng-form class="form-horizontal" name="enrollmentsForm" novalidate autocomplete="off">
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div ng-repeat="(key, value) in formMngr.viewModel.enrollments.map">
+                <div class="clearfix" ng-if="$index % 2 == 0"></div>
+                <label class="col-sm-6 checkbox-inline">
+                    <input type="checkbox" id="enrollments" name="enrollments" value="{{key}}" ng-model="enrollments"
+                           ng-disabled="displayMngr.mode === 'readonly'">
+                    {{value}}
+                </label>
+            </div>
+        </div>
+    </div>
+</ng-form>
